@@ -63,8 +63,8 @@
 
     if (DEBUG_MODE)
         document.getElementById("glyphs_main").innerHTML += `<path id="baseline" d="m7.5 229.86h${box_left_pos + UNIT}" stroke="#ffff00" />`;
-    
+
     document.getElementById("glyphs_main").innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${box_left_pos + UNIT}" stroke="#800000" />`;
 
-    document.getElementById("main").setAttribute("viewBox", `0 0 ${box_left_pos + UNIT} ${BOX_FULL_HEIGHT + UNIT}`);
+    document.getElementById("main").setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2 } ${BOX_FULL_HEIGHT + UNIT}`);
 </script>
