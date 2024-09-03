@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="315mm" height="300mm" version="1.1" viewBox="0 0 315 300" xml:space="preserve"
+    xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke-opacity=".5">
+        <g stroke-linecap="round" stroke-linejoin="round">
+            <g stroke-width="15">
+                <path id="baseline" d="m7.5 229.86h300" stroke="#ffff00" />
+                <path id="nautuhoma_e" d="m7.5 86.366h300" stroke="#800000" />
+                <path id="consonant_zero"
+                    d="m97.5 86.299c-0.029 23.393-0.047 66.632-0.047 89.78 0 36.388-36.726 10.288-59.394-3.509 29.44 18.05 36.94 22.946 74.44 57.296"
+                    stroke="#000000" />
+                <path id="vowel_aa"
+                    d="m112.6 230.18a29.539 28.776 0 0 1 8.8871 32.675 29.539 28.776 0 0 1-29.132 18.362 29.539 28.776 0 0 1-26.954-21.287"
+                    stroke="#0000ff" />
+                <path id="consonant_g_00"
+                    d="m277.48 86.366v76.103s0.96065 34.198-7.4528 47.319c-8.9002 13.879-23.424 20.078-37.5 20.078-11.672 0-22.809-7.4215-31.584-15.118-20.263-17.773-44.122-67.76-44.122-67.76"
+                    stroke="#000000" />
+                <path id="consonant_g_01"
+                    d="m277.06 157.4a35.337 26.413 37.381 0 1-25.602 26.76 35.337 26.413 37.381 0 1-37.833-31.721 35.337 26.413 37.381 0 1 23.908-28.18 35.337 26.413 37.381 0 1 38.902 30.461"
+                    stroke="#000000" />
+                <path id="dot_g_to_gh" d="m154.5 119.02v3a3 3 0 0 0 0-6 3 3 0 0 0 0 6v-3" stroke="#800080" />
+                <path id="vowel_ai_00"
+                    d="m184.5 273.15c16.686-2.7023 54.132-13.736 32.524-13.611-20.875 0.12-35.636-29.674 11.386-29.674 1.8048 0 3.7595-0.0651 5.5631 0"
+                    stroke="#0000ff" />
+                <path id="vowel_ai_01" d="m184.3 273.18a37.524 28.776 0 0 0 36.929 19.053 37.524 28.776 0 0 0 34.679-21.395"
+                    stroke="#0000ff" />
+            </g>
+        </g>
+        <rect x="22.5" y="7.5" width="105" height="285" rx="0" ry="0" stroke="#540054" stroke-width="15" />
+        <rect x="127.5" y="7.5" width="165" height="285" rx="0" ry="0" stroke="#ff00ff" stroke-width="15" />
+    </g>
+</svg>
