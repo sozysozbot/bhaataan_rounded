@@ -33,10 +33,12 @@
     };
 
     const text_to_render = [
-        GLOBAL_GLYPH_TABLE["ʔá"],
-        GLOBAL_GLYPH_TABLE["ghai"],
-        GLOBAL_GLYPH_TABLE["ghai"],
-        GLOBAL_GLYPH_TABLE["ʔá"],
+        "ʔá",
+        "ghai",
+        "ʔá",
+        "ʔá",
+        "ghai",
+        "ʔá",
     ];
 
     const DEBUG_MODE = false;
@@ -45,7 +47,7 @@
     let box_left_pos = UNIT;
 
     for (let i = 0; i < text_to_render.length; i++) {
-        const current_glyph = text_to_render[i];
+        const current_glyph = GLOBAL_GLYPH_TABLE[text_to_render[i]] ?? (() => { throw new Error(`Unknown glyph: ${text_to_render[i]}`) })();
 
         if (DEBUG_MODE)
             document.getElementById("boxes").innerHTML += `<rect x="${box_left_pos + UNIT / 2}" y="${UNIT / 2}" width="${current_glyph.width}" height="${BOX_FULL_HEIGHT}" rx="0" ry="0" />`;
@@ -66,5 +68,5 @@
 
     document.getElementById("glyphs_main").innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${box_left_pos + UNIT}" stroke="#800000" />`;
 
-    document.getElementById("main").setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2 } ${BOX_FULL_HEIGHT + UNIT}`);
+    document.getElementById("main").setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
 </script>
