@@ -1,0 +1,259 @@
+<h1>バート語の組版</h1>
+
+<svg id="main" width="315mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke-opacity=".5">
+        <g stroke-linecap="round" stroke-linejoin="round">
+            <g stroke-width="15" id="glyphs_main">
+            </g>
+        </g>
+        <g id="boxes" stroke="#540054" stroke-width="15">
+        </g>
+    </g>
+</svg>
+
+<script>
+    const UNIT = 15;
+    const BOX_FULL_HEIGHT = 19 * UNIT;
+
+    const BASE_CONSONANT = {
+        "ʔ": {
+            paths: ["m82.5 86.299c-0.029 23.393-0.047 66.632-0.047 89.78 0 36.388-36.726 10.288-59.394-3.509 29.44 18.05 36.94 22.946 74.44 57.296"],
+            lower_anchor: [97.6, 230.18]
+        },
+        "g": {
+            paths: [
+                "m157.48 86.366v76.103s0.96065 34.198-7.4528 47.319c-8.9002 13.879-23.424 20.078-37.5 20.078-11.672 0-22.809-7.4215-31.584-15.118-20.263-17.773-44.122-67.76-44.122-67.76",
+                "m157.06 157.4a35.337 26.413 37.381 0 1-25.602 26.76 35.337 26.413 37.381 0 1-37.833-31.721 35.337 26.413 37.381 0 1 23.908-28.18 35.337 26.413 37.381 0 1 38.902 30.461"
+            ],
+            lower_anchor: [113.97, 230.18],
+            dot: [34.5, 119.02]
+        },
+        "z": {
+            paths: [
+                "m118.2 142.58h-66.231",
+                "m118.2 86.293v92.756l0.14 50.744",
+                "m52.1 86.293 1e-4 79.619c-3.3552 37.74-29.583 23.188-31.294-1.9141-0.6721-9.864-0.8694-21.419 31.201-21.419"
+            ],
+            lower_anchor: [118.2, 230.18]
+        },
+        "p": {
+            paths: [
+                "m75 158.06s-33.79-1.0281-47.036-12.965c-4.455-4.0148-5.9136-11.919-5.9136-11.919",
+                "m75 158.06s33.79 1.0281 47.036 12.965c4.455 4.0147 5.9136 11.919 5.9136 11.919",
+                "m75 86.293-3e-4 143.5",
+            ],
+            lower_anchor: [75, 230.18],
+            dot: [30, 206.08]
+        }
+    }
+
+    const VOWEL = {
+        "á": {
+            paths: [
+                "m0 0a29.539 28.776 0 0 1 8.8871 32.675 29.539 28.776 0 0 1-29.132 18.362 29.539 28.776 0 0 1-26.954-21.287"
+            ],
+            anchored: true
+        },
+        "ai": {
+            paths: [
+                "m 0 -0.315 c -1.804 -0.065 -3.758 0 -5.563 0 c -47.022 0 -32.261 29.794 -11.386 29.674 c 21.608 -0.125 -15.838 10.909 -32.524 13.611a37.524 28.776 0 0 0 36.929 19.053 37.524 28.776 0 0 0 34.679-21.395"
+            ],
+            anchored: true
+        },
+        "e": {
+            paths: [
+                "m28.7 87.03s20.534-41.854 62.61-62.946"
+            ],
+            anchored: false
+        }
+    }
+
+    function call_consonant(consonant) {
+        return BASE_CONSONANT[consonant].paths.map(d => `<path stroke="#000000" d="${d}" />`);
+    }
+
+    function call_dot_at([x, y]) {
+        return `<path d="m${x} ${y}v3a3 3 0 0 0 0-6 3 3 0 0 0 0 6v-3" stroke="#800080" />`;
+    }
+
+    function call_vowel_anchored_at(vowel, [x, y]) {
+        if (VOWEL[vowel].anchored) {
+            return `<g transform="translate(${x} ${y})">
+            ${VOWEL[vowel].paths.map(d => `<path stroke="#0000ff" d="${d}" />`).join("")}
+        </g>`;
+        }
+        else { throw new Error(`Vowel ${vowel} should not be anchored`); }
+    }
+
+    function call_vowel_non_anchored(vowel) {
+        if (!VOWEL[vowel].anchored) {
+            return VOWEL[vowel].paths.map(d => `<path stroke="#0000ff" d="${d}" />`);
+        }
+        else { throw new Error(`Vowel ${vowel} should be anchored`); }
+    }
+
+    function automatic({ consonant, vowel, dotted }) {
+        const consonant_paths = call_consonant(consonant);
+        const vowel_paths = vowel === 'a' ? [] : VOWEL[vowel].anchored ?
+            [call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].lower_anchor)] : call_vowel_non_anchored(vowel);
+
+        if (dotted) {
+            const dot_coord = BASE_CONSONANT[consonant].dot;
+            if (!dot_coord) { throw new Error(`Consonant ${consonant} does not have a dot`); }
+            const dot_path = call_dot_at(dot_coord);
+            return [...consonant_paths, dot_path, ...vowel_paths];
+        }
+        else {
+            return [...consonant_paths, ...vowel_paths];
+        }
+    }
+
+    const GLOBAL_GLYPH_TABLE = {
+        "pha": {
+            width: 135,
+            paths: automatic({ consonant: "p", vowel: "a", dotted: true })
+        },
+        "phá": {
+            width: 135,
+            paths: automatic({ consonant: "p", vowel: "á", dotted: true })
+        },
+        "phe": {
+            width: 135,
+            paths: automatic({ consonant: "p", vowel: "e", dotted: true })
+        },
+        "phai": {
+            width: 135,
+            paths: automatic({ consonant: "p", vowel: "ai", dotted: true })
+        },
+
+        "za": {
+            width: 135,
+            paths: automatic({ consonant: "z", vowel: "a" })
+        },
+        "zá": {
+            width: 135,
+            paths: automatic({ consonant: "z", vowel: "á" })
+        },
+        "ze": {
+            width: 135,
+            paths: automatic({ consonant: "z", vowel: "e" })
+        },
+        "zai": {
+            width: 135,
+            paths: automatic({ consonant: "z", vowel: "ai" })
+        },
+        "gha": {
+            width: 165,
+            paths: automatic({ consonant: "g", vowel: "a", dotted: true })
+        },
+        "ghá": {
+            width: 165,
+            paths: automatic({ consonant: "g", vowel: "á", dotted: true })
+        },
+        "ghe": {
+            width: 165,
+            paths: automatic({ consonant: "g", vowel: "e", dotted: true })
+        },
+        
+        "ghai": {
+            width: 165,
+            paths: automatic({ consonant: "g", vowel: "ai", dotted: true })
+        },
+
+        "ʔa": {
+            width: 105,
+            paths: automatic({ consonant: "ʔ", vowel: "a" })
+        },
+
+        "ʔá": {
+            width: 105,
+            paths: automatic({ consonant: "ʔ", vowel: "á" })
+        },
+
+        "ʔe": {
+            width: 105,
+            paths: automatic({ consonant: "ʔ", vowel: "e" })
+        },
+        "ʔai": {
+            width: 120,
+            paths: automatic({ consonant: "ʔ", vowel: "ai" })
+        },
+    };
+
+    const text_to_render = [
+        "pha",
+        "phá",
+        "phe",
+        "phai",
+        "za",
+        "zá",
+        "ze",
+        "zai",
+        "gha",
+        "ghá",
+        "ghe",
+        "ghai",
+        "ʔa",
+        "ʔá",
+        "ʔe",
+        "ʔai",
+    ];
+
+    const DEBUG_MODE = false;
+
+    // 1 単位分、棒だけが描画される余白を残す
+    let box_left_pos = UNIT;
+
+    for (let i = 0; i < text_to_render.length; i++) {
+        const current_glyph = GLOBAL_GLYPH_TABLE[text_to_render[i]] ?? (() => { throw new Error(`Unknown glyph: ${text_to_render[i]}`) })();
+
+        if (DEBUG_MODE)
+            document.getElementById("boxes").innerHTML += `<rect x="${box_left_pos + UNIT / 2}" y="${UNIT / 2}" width="${current_glyph.width}" height="${BOX_FULL_HEIGHT}" rx="0" ry="0" />`;
+
+        let glyph = "";
+
+        for (let j = 0; j < current_glyph.paths.length; j++) {
+            glyph += current_glyph.paths[j];
+        }
+
+        document.getElementById("glyphs_main").innerHTML += `<g transform="translate(${box_left_pos})">${glyph}</g>`;
+
+        box_left_pos += current_glyph.width;
+    }
+
+    if (DEBUG_MODE)
+        document.getElementById("glyphs_main").innerHTML += `<path id="baseline" d="m7.5 229.86h${box_left_pos + UNIT}" stroke="#ffff00" />`;
+
+    document.getElementById("glyphs_main").innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${box_left_pos + UNIT}" stroke="#800000" />`;
+
+    document.getElementById("main").setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
+</script>
+
+<h1>作った組み合わせ一覧</h1>
+
+<script>
+    const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
+
+    const list_of_consonants = ["ph", "z", "gh", "ʔ"];
+    const list_of_vowels = ["a", "á", "e", "ai"];
+
+    // draw the HTML table
+    document.write("<table border='1' cellpadding='5' cellspacing='0'>");
+    document.write("<tr>");
+    document.write("<td>↓C ＼ V→</td>");
+    for (let i = 0; i < list_of_vowels.length; i++) {
+        document.write(`<td>${list_of_vowels[i]}</td>`);
+    }
+    document.write("</tr>");
+
+    for (let i = 0; i < list_of_consonants.length; i++) {
+        document.write("<tr>");
+        document.write(`<td>${list_of_consonants[i]}</td>`);
+        for (let j = 0; j < list_of_vowels.length; j++) {
+            const current_combination = list_of_consonants[i] + list_of_vowels[j];
+            document.write(`<td>${list_of_defined.includes(current_combination) ? current_combination : ""}</td>`);
+        }
+        document.write("</tr>");
+    }
+
+</script>
