@@ -1,7 +1,6 @@
 <h1>バート語の組版</h1>
 
-<svg id="main" width="315mm" height="300mm" version="1.1" viewBox="0 0 315 300" xml:space="preserve"
-    xmlns="http://www.w3.org/2000/svg">
+<svg id="main" width="315mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke-opacity=".5">
         <g stroke-linecap="round" stroke-linejoin="round">
             <g stroke-width="15" id="glyphs_main">
@@ -50,12 +49,14 @@
         "á": {
             paths: [
                 "m0 0a29.539 28.776 0 0 1 8.8871 32.675 29.539 28.776 0 0 1-29.132 18.362 29.539 28.776 0 0 1-26.954-21.287"
-            ]
+            ],
+            anchored: true
         },
         "ai": {
             paths: [
                 "m 0 -0.315 c -1.804 -0.065 -3.758 0 -5.563 0 c -47.022 0 -32.261 29.794 -11.386 29.674 c 21.608 -0.125 -15.838 10.909 -32.524 13.611a37.524 28.776 0 0 0 36.929 19.053 37.524 28.776 0 0 0 34.679-21.395"
-            ]
+            ],
+            anchored: true
         },
     }
 
@@ -68,9 +69,12 @@
     }
 
     function call_vowel_anchored_at(vowel, [x, y]) {
-        return `<g transform="translate(${x} ${y})">
-            ${ VOWEL[vowel].paths.map(d => `<path stroke="#0000ff" d="${d}" />`).join("") }
+        if (VOWEL[vowel].anchored) {
+            return `<g transform="translate(${x} ${y})">
+            ${VOWEL[vowel].paths.map(d => `<path stroke="#0000ff" d="${d}" />`).join("")}
         </g>`;
+        }
+        else { throw new Error(`Vowel ${vowel} should not be anchored`); }
     }
 
     const GLOBAL_GLYPH_TABLE = {
@@ -79,6 +83,13 @@
             paths: [
                 ...call_consonant("ʔ"),
                 call_vowel_anchored_at("á", BASE_CONSONANT["ʔ"].lower_anchor)
+            ]
+        },
+        "ʔai": {
+            width: 120,
+            paths: [
+                ...call_consonant("ʔ"),
+                call_vowel_anchored_at("ai", BASE_CONSONANT["ʔ"].lower_anchor)
             ]
         },
         "ghai": {
@@ -111,6 +122,14 @@
                 call_vowel_anchored_at("á", BASE_CONSONANT["p"].lower_anchor)
             ]
         },
+        "ghá": {
+            width: 165,
+            paths: [
+                ...call_consonant("g"),
+                call_dot_at(30, 206.08),
+                call_vowel_anchored_at("á", BASE_CONSONANT["g"].lower_anchor)
+            ]
+        },
         "phai": {
             width: 135,
             paths: [
@@ -125,19 +144,27 @@
                 ...call_consonant("z"),
                 call_vowel_anchored_at("ai", BASE_CONSONANT["z"].lower_anchor)
             ]
+        },
+        "zá": {
+            width: 135,
+            paths: [
+                ...call_consonant("z"),
+                call_vowel_anchored_at("á", BASE_CONSONANT["z"].lower_anchor)
+            ]
         }
     };
 
     const text_to_render = [
-        "phai",
-        "ze",
-        "ghai",
         "pha",
-        "ʔá",
+        "phá",
+        "phai",
+        "zá",
+        "ze",
+        "zai",
+        "ghá",
         "ghai",
         "ʔá",
-        "phá",
-        "zai",
+        "ʔai",
     ];
 
     const DEBUG_MODE = true;
@@ -168,4 +195,33 @@
     document.getElementById("glyphs_main").innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${box_left_pos + UNIT}" stroke="#800000" />`;
 
     document.getElementById("main").setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
+</script>
+
+<h1>作った組み合わせ一覧</h1>
+
+<script>
+    const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
+
+    const list_of_consonants = ["ph", "z", "gh", "ʔ"];
+    const list_of_vowels = ["a", "á", "e", "ai"];
+
+    // draw the HTML table
+    document.write("<table border='1' cellpadding='5' cellspacing='0'>");
+    document.write("<tr>");
+    document.write("<td>↓C ＼ V→</td>");
+    for (let i = 0; i < list_of_vowels.length; i++) {
+        document.write(`<td>${list_of_vowels[i]}</td>`);
+    }
+    document.write("</tr>");
+
+    for (let i = 0; i < list_of_consonants.length; i++) {
+        document.write("<tr>");
+        document.write(`<td>${list_of_consonants[i]}</td>`);
+        for (let j = 0; j < list_of_vowels.length; j++) {
+            const current_combination = list_of_consonants[i] + list_of_vowels[j];
+            document.write(`<td>${list_of_defined.includes(current_combination) ? current_combination : ""}</td>`);
+        }
+        document.write("</tr>");
+    }
+
 </script>
