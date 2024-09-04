@@ -183,7 +183,7 @@
 
 
 <script>
-     render_word({
+    render_word({
         svg_id: "consonant_o",
         syllables_to_render: [
             "pho", "bho", "mo",
@@ -194,14 +194,37 @@
 
 </script>
 
-<h1>文を組んでみる</h1>
+<h1>単語を組んでみる</h1>
+
+<h2>cajxitanaunijasukadhíná</h2>
 
 <script>
     render_word({
         svg_id: "sample",
         syllables_to_render: [
-            "ca","jъ", "xi", "ta", "nau", "ni", "ja", "su", "ka", "dhí", "ná"
+            "ca", "jъ", "xi", "ta", "nau", "ni", "ja", "su", "ka", "dhí", "ná"
         ], DEBUG_MODE: false, height: 20
+    });
+    render_word({
+        svg_id: "sample_without_nautu",
+        syllables_to_render: [
+            "ca", "jъ", "xi", "ta", "nau", "ni", "ja", "su", "ka", "dhí", "ná"
+        ], DEBUG_MODE: false, height: 20, nautuhoma_e: false
+    });
+</script>
+
+<h2>phecúphaicnixate</h2>
+
+<script>
+    render_word({
+        svg_id: "sample2",
+        syllables_to_render: [
+            "phe", "cú", "phai", "cъ", "ni", "xa", "te"], DEBUG_MODE: false, height: 20,
+    });
+    render_word({
+        svg_id: "sample2_without_nautu",
+        syllables_to_render: [
+            "phe", "cú", "phai", "cъ", "ni", "xa", "te"], DEBUG_MODE: false, height: 20, nautuhoma_e: false
     });
 </script>
 
@@ -234,7 +257,7 @@
         document.write(`<td>${list_of_consonants[i]}</td>`);
         for (let j = 0; j < list_of_vowels.length; j++) {
             const current_combination = list_of_consonants[i] + list_of_vowels[j];
-            document.write(`<td>${ current_combination }</td>`);
+            document.write(`<td>${current_combination}</td>`);
         }
         document.write("</tr>");
     }

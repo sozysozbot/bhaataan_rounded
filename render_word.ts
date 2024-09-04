@@ -40,10 +40,10 @@ function get_constituents_from_syllable(input: string): { consonant: BaseConsona
 
 const CONSONANT_CONTRIBUTION_TO_WIDTH: { [key in BaseConsonant]: number } = {
     "p": 135, "b": 165, "m": 135,
-    "c": 105, "s": 105, "x": 135, "z": 135,
-    "t": 135, "d": 105, "n": 105, "l": 105, "r": 105,
+    "c": 120, "s": 105, "x": 135, "z": 135,
+    "t": 120, "d": 105, "n": 105, "l": 105, "r": 105,
     "k": 135, "g": 165,
-    "h": 105, "j": 135, "w": 105, "ʔ": 105,
+    "h": 105, "j": 120, "w": 105, "ʔ": 105,
 };
 
 const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
@@ -51,7 +51,14 @@ const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
     "i": 75, "í": 75, "au": 75, "o": 60,
 };
 
-function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30 }: { syllables_to_render: string[], DEBUG_MODE: boolean, svg_id?: string, height?: number }) {
+function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30, nautuhoma_e = true }
+    : {
+        syllables_to_render: string[],
+        DEBUG_MODE: boolean,
+        svg_id?: string,
+        height?: number,
+        nautuhoma_e?: boolean
+    }) {
     if (!document.getElementById(svg_id)) {
         document.write(`<svg id="${svg_id}" height="${height}mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke-opacity="${DEBUG_MODE ? .5 : 1}">
@@ -96,7 +103,8 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
     if (DEBUG_MODE)
         document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="baseline" d="m7.5 229.86h${axis_width}" stroke="#ffff00" />`;
 
-    document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
+    if (nautuhoma_e)
+        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
 
     document.getElementById(svg_id)!.setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
 }
