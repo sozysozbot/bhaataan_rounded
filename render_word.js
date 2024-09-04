@@ -45,20 +45,11 @@ function get_constituents_from_syllable(input) {
     return { consonant, vowel: vowel, dotted };
 }
 const GLOBAL_GLYPH_TABLE = {
-    "ze": { width: 135 },
-    "dhe": { width: 105 }, "ṣъ": { width: 105 }, "he": { width: 105 },
-    "ṇau": { width: 165 }, "li": { width: 165 }, "ḷi": { width: 165 },
-    "bho": { width: 165 }, "ḷo": { width: 165 }, "rí": { width: 165 },
     "pha": { width: 135 }, "bha": { width: 165 }, "ma": { width: 135 },
     "ṣa": { width: 105 }, "sa": { width: 105 }, "xa": { width: 135 }, "za": { width: 135 },
     "ṭa": { width: 135 }, "dha": { width: 105 }, "ṇa": { width: 105 }, "ḷa": { width: 105 }, "ra": { width: 105 },
     "kha": { width: 135 }, "gha": { width: 165 },
     "ha": { width: 105 }, "ya": { width: 135 }, "wa": { width: 105 }, "ʔa": { width: 105 },
-    "phaQ": { width: 135 }, "bhaQ": { width: 165 }, "maQ": { width: 135 },
-    "ṣaQ": { width: 105 }, "saQ": { width: 105 }, "xaQ": { width: 135 }, "zaQ": { width: 135 },
-    "ṭaQ": { width: 135 }, "dhaQ": { width: 105 }, "ṇaQ": { width: 105 }, "ḷaQ": { width: 105 }, "raQ": { width: 105 },
-    "khaQ": { width: 135 }, "ghaQ": { width: 165 },
-    "haQ": { width: 105 }, "yaQ": { width: 135 }, "waQ": { width: 105 }, "ʔaQ": { width: 105 },
     "phá": { width: 135 }, "bhá": { width: 165 }, "má": { width: 135 },
     "ṣá": { width: 105 }, "sá": { width: 105 }, "xá": { width: 135 }, "zá": { width: 135 },
     "ṭá": { width: 135 }, "dhá": { width: 105 }, "ṇá": { width: 105 }, "ḷá": { width: 105 }, "rá": { width: 105 },
@@ -79,6 +70,19 @@ const GLOBAL_GLYPH_TABLE = {
     "ṭú": { width: 135 }, "dhú": { width: 105 }, "ṇú": { width: 105 }, "ḷú": { width: 105 }, "rú": { width: 105 },
     "khú": { width: 135 }, "ghú": { width: 165 },
     "hú": { width: 105 }, "yú": { width: 135 }, "wú": { width: 105 }, "ʔú": { width: 105 },
+    "phe": { width: 135 }, "bhe": { width: 165 }, "me": { width: 135 },
+    "ṣe": { width: 105 }, "se": { width: 105 }, "xe": { width: 135 }, "ze": { width: 135 },
+    "ṭe": { width: 135 }, "dhe": { width: 105 }, "ṇe": { width: 105 }, "ḷe": { width: 105 }, "re": { width: 105 },
+    "khe": { width: 135 }, "ghe": { width: 165 },
+    "he": { width: 105 }, "ye": { width: 135 }, "we": { width: 105 }, "ʔe": { width: 105 },
+    "phaQ": { width: 135 }, "bhaQ": { width: 165 }, "maQ": { width: 135 },
+    "ṣaQ": { width: 105 }, "saQ": { width: 105 }, "xaQ": { width: 135 }, "zaQ": { width: 135 },
+    "ṭaQ": { width: 135 }, "dhaQ": { width: 105 }, "ṇaQ": { width: 105 }, "ḷaQ": { width: 105 }, "raQ": { width: 105 },
+    "khaQ": { width: 135 }, "ghaQ": { width: 165 },
+    "haQ": { width: 105 }, "yaQ": { width: 135 }, "waQ": { width: 105 }, "ʔaQ": { width: 105 },
+    "ṣъ": { width: 105 },
+    "ṇau": { width: 165 }, "li": { width: 165 }, "ḷi": { width: 165 },
+    "bho": { width: 165 }, "ḷo": { width: 165 }, "rí": { width: 165 },
 };
 function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main" }) {
     if (!document.getElementById(svg_id)) {

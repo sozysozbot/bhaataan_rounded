@@ -46,7 +46,7 @@
 </script>
 
 
-<h2>2. 母音の下に anchor すればいいやつ</h2>
+<h2>2. 子音の下に anchor すればいいやつ</h2>
 
 <script>
     render_word({
@@ -103,6 +103,33 @@
     });
 
     document.write("<br>");
+</script>
+
+
+<h2>2. 子音の上下にのみあるやつ</h2>
+
+<h3>2-1. 中央揃えの e および aQ</h3>
+
+<script>
+    render_word({
+        svg_id: "consonant_e",
+        syllables_to_render: [
+            "phe", "bhe", "me",
+            "ṣe", "se", "xe", "ze", "ṭe", "dhe", "ṇe",
+            "ḷe", "re", "khe", "ghe", "he", "ye", "we", "ʔe",
+        ], DEBUG_MODE: true
+    });
+</script>
+
+<script>
+    render_word({
+        svg_id: "consonant_aQ",
+        syllables_to_render: [
+            "phaQ", "bhaQ", "maQ",
+            "ṣaQ", "saQ", "xaQ", "zaQ", "ṭaQ", "dhaQ", "ṇaQ",
+            "ḷaQ", "raQ", "khaQ", "ghaQ", "haQ", "yaQ", "waQ", "ʔaQ",
+        ], DEBUG_MODE: true
+    });
 </script>
 
 <h1>作った組み合わせ一覧</h1>
