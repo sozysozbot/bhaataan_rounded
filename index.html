@@ -1,12 +1,12 @@
 <h1>バート語の組版</h1>
 
-<svg id="main" height="60mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg id="main" height="30mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke-opacity=".5">
+        <g id="boxes" stroke="#ffd1ff" stroke-width="15">
+        </g>
         <g stroke-linecap="round" stroke-linejoin="round">
             <g stroke-width="15" id="glyphs_main">
             </g>
-        </g>
-        <g id="boxes" stroke="#540054" stroke-width="15">
         </g>
     </g>
 </svg>
@@ -117,6 +117,9 @@
         "li": {
             width: 165, paths: automatic({ consonant: "l", vowel: "i" })
         },
+        "ḷi": {
+            width: 165, paths: automatic({ consonant: "l", vowel: "i", dotted: true })
+        },
         "bho": {
             width: 165, paths: automatic({ consonant: "b", vowel: "o", dotted: true })
         },
@@ -163,6 +166,10 @@
             width: 135,
             paths: automatic({ consonant: "x", vowel: "á" })
         },
+        "ṭá": {
+            width: 135,
+            paths: automatic({ consonant: "t", vowel: "á", dotted: true })
+        },
         "ḷá": {
             width: 105,
             paths: automatic({ consonant: "l", vowel: "á", dotted: true })
@@ -179,11 +186,16 @@
             width: 165,
             paths: automatic({ consonant: "b", vowel: "á", dotted: true })
         },
+        "khá": {
+            width: 135,
+            paths: automatic({ consonant: "k", vowel: "á", dotted: true })
+        },
     };
 
     const text_to_render = [
-       "wá", "dhá", "ṣá", "há", "má", "ṇá", "xá",
-       "ḷá", "yá", "rá", "bhá"
+       "phá", "bhá", "má",
+       "ṣá", "sá", "xá", "zá", "ṭá", "dhá", "ṇá", 
+       "ḷá", "rá", "khá", "ghá", "há", "yá", "wá", "ʔá",
         /*"ze",
         "he",
         "ma",
@@ -249,7 +261,7 @@
 <script>
     const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
 
-    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "z", "ṭ", "dh", "ṇ", "l", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
+    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "z", "ṭ", "dh", "ṇ",  "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
     const list_of_vowels = ["a", "ъ", "á", "e", "i", "í", "u", "ú", "ai", "au"];
 
     // draw the HTML table
