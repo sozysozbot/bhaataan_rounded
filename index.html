@@ -129,15 +129,61 @@
         "ya": {
             width: 135, paths: automatic({ consonant: "j", vowel: "a", dotted: true })
         },
+
+        "sá": {
+            width: 105,
+            paths: automatic({ consonant: "s", vowel: "á" })
+        },
+
+        "wá": {
+            width: 105,
+            paths: automatic({ consonant: "w", vowel: "á" })
+        },
+        "dhá": {
+            width: 105,
+            paths: automatic({ consonant: "d", vowel: "á", dotted: true })
+        },
+        "ṣá": {
+            width: 105,
+            paths: automatic({ consonant: "c", vowel: "á", dotted: true })
+        },
+        "há": {
+            width: 105,
+            paths: automatic({ consonant: "h", vowel: "á" })
+        },
+        "má": {
+            width: 135,
+            paths: automatic({ consonant: "m", vowel: "á" })
+        },
+        "ṇá": {
+            width: 105,
+            paths: automatic({ consonant: "n", vowel: "á", dotted: true })
+        },
+        "xá": {
+            width: 135,
+            paths: automatic({ consonant: "x", vowel: "á" })
+        },
+        "ḷá": {
+            width: 105,
+            paths: automatic({ consonant: "l", vowel: "á", dotted: true })
+        },
+        "yá": {
+            width: 135,
+            paths: automatic({ consonant: "j", vowel: "á", dotted: true })
+        },
+        "rá": {
+            width: 105,
+            paths: automatic({ consonant: "r", vowel: "á" })
+        },
+        "bhá": {
+            width: 165,
+            paths: automatic({ consonant: "b", vowel: "á", dotted: true })
+        },
     };
 
     const text_to_render = [
-        "xaQ",
-        "li",
-        "bho",
-        "ḷo",
-        "rí",
-        "ya",
+       "wá", "dhá", "ṣá", "há", "má", "ṇá", "xá",
+       "ḷá", "yá", "rá", "bhá"
         /*"ze",
         "he",
         "ma",
@@ -203,7 +249,7 @@
 <script>
     const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
 
-    const list_of_consonants = ["ph", "m", "ṣ", "s", "z", "ṭ", "dh", "ṇ", "l", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
+    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "z", "ṭ", "dh", "ṇ", "l", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
     const list_of_vowels = ["a", "ъ", "á", "e", "i", "í", "u", "ú", "ai", "au"];
 
     // draw the HTML table
