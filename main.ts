@@ -27,8 +27,10 @@ function call_vowel_non_anchored(vowel: Vowel, consonant: Consonant, debug_mode:
 function automatic({ consonant, vowel, dotted }: { consonant: Consonant, vowel: Vowel | 'a', dotted: boolean }, is_debug_mode: boolean): string[] {
     const consonant_paths = call_consonant(consonant);
 
-    const vowel_paths = vowel === 'a' ? "" : VOWEL[vowel].anchored ?
-        call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].lower_anchor, is_debug_mode) :
+    const vowel_paths = vowel === 'a' ? "" : VOWEL[vowel].anchored === "lower" ?
+        call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].lower_anchor, is_debug_mode) : 
+        VOWEL[vowel].anchored === "upper" ?
+        call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].upper_anchor, is_debug_mode) :
         call_vowel_non_anchored(vowel, consonant, is_debug_mode);
 
     const consonant_horizontal_displacement =

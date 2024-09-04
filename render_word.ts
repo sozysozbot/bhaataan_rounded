@@ -95,7 +95,11 @@ const GLOBAL_GLYPH_TABLE = {
 
     "phi": { width: 135 + 60 }, "bhi": { width: 165 + 60 }, "mi": { width: 135 + 60 },
     "ṣi": { width: 105 + 60 }, "si": { width: 105 + 60 }, "xi": { width: 135 + 60 }, "zi": { width: 135 + 60 },
-    "ṭi": { width: 135 + 60 }, "dhi": { width: 105 + 60 }, "ṇi": { width: 105 + 60 }, "ḷi": { width: 105 + 60 }, "ri": { width: 105 + 60 },
+    "ṭi": { width: 135 + 60 }, "dhi": { width: 105 + 60 }, "ṇi": { width: 105 + 60 }, "ḷi": { width: 105 + 60 }, 
+    
+    "li": { width: 105 + 60 }, 
+    
+    "ri": { width: 105 + 60 },
     "khi": { width: 135 + 60 }, "ghi": { width: 165 + 60 },
     "hi": { width: 105 + 60 }, "yi": { width: 135 + 60 }, "wi": { width: 105 + 60 }, "ʔi": { width: 105 + 60 },
 
