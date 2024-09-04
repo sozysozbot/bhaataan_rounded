@@ -191,7 +191,11 @@ const VOWEL = {
         ],
         anchored: false,
         self_horizontal_displacement: {
-            "n": 90
+            "p": 90, "b": 90, "m": 90,
+            "c": 90, "s": 90, "x": 90, "z": 90,
+            "t": 90, "d": 90, "n": 90, "l": 90, "r": 90,
+            "k": 90, "g": 90,
+            "h": 90, "j": 90, "w": 90, "ʔ": 90,
         }
     },
     "u": {

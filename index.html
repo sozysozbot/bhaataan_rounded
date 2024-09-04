@@ -46,7 +46,7 @@
 </script>
 
 
-<h2>2. 子音の下に anchor すればいいやつ</h2>
+<h2>2. 子音の下に anchor すればいいやつ (a, á, u, ú, ai)</h2>
 
 <script>
     render_word({
@@ -106,9 +106,7 @@
 </script>
 
 
-<h2>2. 子音の上下にのみあるやつ</h2>
-
-<h3>2-1. 中央揃えの e および aQ および ъ</h3>
+<h2>2. 子音の上下にのみあるやつ (e, aQ, ъ)</h2>
 
 <script>
     render_word({
@@ -142,6 +140,41 @@
         ], DEBUG_MODE: true
     });
 </script>
+
+<h2>3. 子音の上と右にあるやつ (i, í, au)</h2>
+
+<p>要改良</p>
+
+<script>
+    render_word({
+        svg_id: "consonant_í",
+        syllables_to_render: [
+            "phí", "bhí", "mí",
+            "ṣí", "sí", "xí", "zí", "ṭí", "dhí", "ṇí",
+            "ḷí", "rí", "khí", "ghí", "hí", "yí", "wí", "ʔí",
+        ], DEBUG_MODE: true
+    });
+
+    render_word({
+        svg_id: "consonant_i",
+        syllables_to_render: [
+            "phi", "bhi", "mi",
+            "ṣi", "si", "xi", "zi", "ṭi", "dhi", "ṇi",
+            "ḷi", "ri", "khi", "ghi", "hi", "yi", "wi", "ʔi",
+        ], DEBUG_MODE: true
+    });
+
+
+    render_word({
+        svg_id: "consonant_au_",
+        syllables_to_render: [
+            "phau", "bhau", "mau",
+            "ṣau", "sau", "xau", "zau", "ṭau", "dhau", "ṇau",
+            "ḷau", "rau", "khau", "ghau", "hau", "yau", "wau", "ʔau",
+        ], DEBUG_MODE: true
+    });
+</script>
+
 
 <h1>作った組み合わせ一覧</h1>
 
