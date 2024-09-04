@@ -244,10 +244,10 @@ const VOWEL = {
         self_horizontal_displacement: {},
         consonant_horizontal_displacement: {
             "p": 45, "b": 30, "m": 45,
-            "c": 30, "s": 30, "x": 30, "z": 30,
-            "t": 30, "d": 30, "n": 30, "l": 30, "r": 30,
+            "c": 45, "s": 30, "x": 30, "z": 30,
+            "t": 45, "d": 30, "n": 45, "l": 30, "r": 30,
             "k": 30, "g": 30,
-            "h": 45 /* EXCEPTION */, "j": 30, "w": 45 /* EXCEPTION */, "ʔ": 30,
+            "h": 60, "j": 45, "w": 45, "ʔ": 45,
         }
     }
 };
