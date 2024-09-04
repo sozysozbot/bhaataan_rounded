@@ -1,4 +1,4 @@
-function call_consonant(consonant: Consonant): string[] {
+function call_consonant(consonant: BaseConsonant): string[] {
     return BASE_CONSONANT[consonant].paths.map(d => `<path stroke="#000000" d="${d}" />`);
 }
 
@@ -15,7 +15,7 @@ function call_vowel_anchored_at(vowel: Vowel, [x, y]: [number, number], debug_mo
     else { throw new Error(`Vowel ${vowel} should not be anchored`); }
 }
 
-function call_vowel_non_anchored(vowel: Vowel, consonant: Consonant, debug_mode: boolean): string {
+function call_vowel_non_anchored(vowel: Vowel, consonant: BaseConsonant, debug_mode: boolean): string {
     const dat = VOWEL[vowel];
     if (!dat.anchored) {
         const x = dat.self_horizontal_displacement[consonant];
@@ -24,7 +24,7 @@ function call_vowel_non_anchored(vowel: Vowel, consonant: Consonant, debug_mode:
     else { throw new Error(`Vowel ${vowel} should be anchored`); }
 }
 
-function automatic({ consonant, vowel, dotted }: { consonant: Consonant, vowel: Vowel | 'a', dotted: boolean }, is_debug_mode: boolean): string[] {
+function automatic({ consonant, vowel, dotted }: { consonant: BaseConsonant, vowel: Vowel | 'a', dotted: boolean }, is_debug_mode: boolean): string[] {
     const consonant_paths = call_consonant(consonant);
 
     const vowel_paths = vowel === 'a' ? "" : VOWEL[vowel].anchored === "lower" ?

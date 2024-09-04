@@ -195,11 +195,9 @@
 </script>
 
 
-<h1>作った組み合わせ一覧</h1>
+<h1>組み合わせ一覧</h1>
 
 <script>
-    const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
-
     const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "x", "z", "ṭ", "dh", "ṇ", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
     const list_of_vowels = ["a", "ъ", "aQ", "á", "e", "i", "í", "u", "ú", "o", "ai", "au"];
 
@@ -217,7 +215,7 @@
         document.write(`<td>${list_of_consonants[i]}</td>`);
         for (let j = 0; j < list_of_vowels.length; j++) {
             const current_combination = list_of_consonants[i] + list_of_vowels[j];
-            document.write(`<td>${list_of_defined.includes(current_combination) ? current_combination : ""}</td>`);
+            document.write(`<td>${ current_combination }</td>`);
         }
         document.write("</tr>");
     }

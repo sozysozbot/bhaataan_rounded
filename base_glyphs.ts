@@ -2,10 +2,10 @@ const UNIT = 15;
 const GLOBAL_KERNING = 15;
 const BOX_FULL_HEIGHT = 19 * UNIT;
 
-type Consonant = "ʔ" | "g" | "z" | "p" | "k" | "w" | "d" | "c" | "h" | "m" | "s" | "n" | "t" | "x" | "l" | "j" | "r" | "b";
+type BaseConsonant = "ʔ" | "g" | "z" | "p" | "k" | "w" | "d" | "c" | "h" | "m" | "s" | "n" | "t" | "x" | "l" | "j" | "r" | "b";
 
 const BASE_CONSONANT: {
-    [key in Consonant]: {
+    [key in BaseConsonant]: {
         paths: string[],
         lower_anchor: [number, number],
         upper_anchor: [number, number],
@@ -81,7 +81,7 @@ const BASE_CONSONANT: {
             "m43.28 146.24a37.464 31.247 0 0018.732 27.061 37.464 31.247 0 0037.464 0 37.464 31.247 0 0018.732-27.061",
             "m118.2 86.293v143.49"
         ],
-        dot: [15, 206.08],
+        dot: [35.78, 206.08],
         lower_anchor: [118.2, 230.18],
         upper_anchor: [118.2, 86.366]
     },
