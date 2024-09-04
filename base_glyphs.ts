@@ -47,7 +47,7 @@ const BASE_CONSONANT: {
         ],
         dot: [14.9, 160.63],
         lower_anchor: [65.65, 230.18],
-        upper_anchor: [65.65, 86.366]
+        upper_anchor: [80.65, 86.366]
     },
     "s": {
         paths: [
