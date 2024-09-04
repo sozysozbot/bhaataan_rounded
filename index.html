@@ -112,6 +112,14 @@
                 "m97.5 176.65c0 13.3-7.1475 25.589-18.75 32.239-11.602 6.6497-25.898 6.6497-37.5 0-11.603-6.6497-18.75-18.472-18.75-28.603 0-42.102 48.631-18.047 48.631 32.877 0 4.9428-1.5827 22.626-20.203 22.626"
             ],
             dot: [15, 118.95]
+        },
+        "c": {
+            paths: [
+                "m62.4 86.247-30.407 0.04636",
+                "m62.4 157.84a41.753 35.796 0 0 0 36.159-17.898 41.753 35.796 0 0 0 0-35.796 41.753 35.796 0 0 0-36.159-17.898",
+                "m62.4 157.48a41.753 36.157 0 0 1 41.594 33.006 41.753 36.157 0 0 1-34.344 38.759 41.753 36.157 0 0 1-47.581-26.25"
+            ],
+            dot: [14.9, 160.63]
         }
     }
 
@@ -130,16 +138,28 @@
         },
         "e": {
             paths: [
-                "m28.7 86.293s20.534-41.854 62.61-62.946"
-                //    <path id="vowel_e" d="m30 86.293s20.534-41.854 62.61-62.946" stroke="#0000ff" stroke-linejoin="round"
+                "m0 86.293s20.534-41.854 62.61-62.946"
             ],
-            anchored: false
+            anchored: false,
+            horizontal_displacement: {
+                "z": 28.7,
+                "d": 30
+            }
         },
         "ú": {
             paths: [
                 "m 0 0 c -1.804 -0.065 -3.758 0 -5.563 0 c -47.022 0 -26.556 29.119 -11.386 29.674 c 12.707 0.344 26.021 -0.571 38.734 -0.528 a38.084 28.776 0 0 1-29.773 32.645 38.084 28.776 0 0 1-44.665-20.804"
             ],
             anchored: true
+        },
+        "ъ": {
+            paths: [
+                "m0 268.51 37.123-18.117"
+            ],
+            anchored: false,
+            horizontal_displacement: {
+                "c": 40.5
+            }
         }
     }
 
@@ -160,9 +180,10 @@
         else { throw new Error(`Vowel ${vowel} should not be anchored`); }
     }
 
-    function call_vowel_non_anchored(vowel) {
+    function call_vowel_non_anchored(vowel, consonant) {
         if (!VOWEL[vowel].anchored) {
-            return VOWEL[vowel].paths.map(d => `<path stroke="#0000ff" d="${d}" />`);
+            const x = VOWEL[vowel].horizontal_displacement[consonant];
+            return `<g transform="translate(${x ?? 0})">${VOWEL[vowel].paths.map(d => `<path stroke="#0000ff" d="${d}" />`)}</g>`;
         }
         else { throw new Error(`Vowel ${vowel} should be anchored`); }
     }
@@ -170,7 +191,7 @@
     function automatic({ consonant, vowel, dotted }) {
         const consonant_paths = call_consonant(consonant);
         const vowel_paths = vowel === 'a' ? [] : VOWEL[vowel].anchored ?
-            [call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].lower_anchor)] : call_vowel_non_anchored(vowel);
+            [call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].lower_anchor)] : call_vowel_non_anchored(vowel, consonant);
 
         if (dotted) {
             const dot_coord = BASE_CONSONANT[consonant].dot;
@@ -192,10 +213,7 @@
             width: 135,
             paths: automatic({ consonant: "p", vowel: "á", dotted: true })
         },
-        "phe": {
-            width: 135,
-            paths: automatic({ consonant: "p", vowel: "e", dotted: true })
-        },
+
         "phai": {
             width: 135,
             paths: automatic({ consonant: "p", vowel: "ai", dotted: true })
@@ -225,10 +243,7 @@
             width: 165,
             paths: automatic({ consonant: "g", vowel: "á", dotted: true })
         },
-        "ghe": {
-            width: 165,
-            paths: automatic({ consonant: "g", vowel: "e", dotted: true })
-        },
+
         "ghai": {
             width: 165,
             paths: automatic({ consonant: "g", vowel: "ai", dotted: true })
@@ -244,10 +259,6 @@
             paths: automatic({ consonant: "ʔ", vowel: "á" })
         },
 
-        "ʔe": {
-            width: 105,
-            paths: automatic({ consonant: "ʔ", vowel: "e" })
-        },
         "ʔai": {
             width: 120,
             paths: automatic({ consonant: "ʔ", vowel: "ai" })
@@ -261,14 +272,12 @@
             paths: automatic({ consonant: "w", vowel: "a" })
         },
         "dhe": {
-            width: 105, paths: [
-                ...call_consonant("d"),
-                call_dot_at(BASE_CONSONANT["d"].dot),
-                `  <path id="vowel_e" d="m30 86.293s20.534-41.854 62.61-62.946" stroke="#0000ff"  /> `
-            ]
+            width: 105,
+            paths: automatic({ consonant: "d", vowel: "e", dotted: true })
         },
         "ṣъ": {
-            width: 105, paths: []
+            width: 105,
+            paths: automatic({ consonant: "c", vowel: "ъ", dotted: true })
         }
     };
 
@@ -280,9 +289,6 @@
         "ze",
         "dhe",
         "ṣъ",
-        "ṣъ",
-        "ṣъ",
-
         /* "pha",
          "phá",
          "phe",
@@ -336,8 +342,8 @@
 <script>
     const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
 
-    const list_of_consonants = ["ph", "z", "dh", "kh", "gh", "w", "ʔ"];
-    const list_of_vowels = ["a", "á", "e", "ú", "ai"];
+    const list_of_consonants = ["ph", "ṣ", "z", "dh", "kh", "gh", "w", "ʔ"];
+    const list_of_vowels = ["a", "ъ", "á", "e", "ú", "ai"];
 
     // draw the HTML table
     document.write("<table border='1' cellpadding='5' cellspacing='0'>");
