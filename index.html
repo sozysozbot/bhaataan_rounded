@@ -2,7 +2,7 @@
 
 <svg id="main" height="30mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke-opacity=".5">
-        <g id="boxes" stroke="#ffd1ff" stroke-width="15">
+        <g id="boxes_main" stroke="#ffd1ff" stroke-width="15">
         </g>
         <g stroke-linecap="round" stroke-linejoin="round">
             <g stroke-width="15" id="glyphs_main">
@@ -11,7 +11,7 @@
     </g>
 </svg>
 
-<script src="glyphs.js"></script>
+<script src="base_glyphs.js"></script>
 <script src="main.js"></script>
 
 <script>
@@ -192,68 +192,95 @@
         },
     };
 
-    const text_to_render = [
-       "phá", "bhá", "má",
-       "ṣá", "sá", "xá", "zá", "ṭá", "dhá", "ṇá", 
-       "ḷá", "rá", "khá", "ghá", "há", "yá", "wá", "ʔá",
-        /*"ze",
-        "he",
-        "ma",
-        "sá",
-        "ṇau",
-        "ṭu",*/
-        /* "ʔá",
-         "ghai",
-         "khú",
-         "wa",
-         "dhe",
-         "ṣъ",*/
-        /* "pha",
-         "phá",
-         "phe",
-         "phai",
-         "za",
-         "zá",
-         "ze",
-         "zai",
-         "gha",
-         "ghá",
-         "ghe",
-         "ghai",
-         "ʔa",
-         "ʔá",
-         "ʔe",
-         "ʔai",*/
-    ];
 
-    const DEBUG_MODE = true;
 
-    // 1 単位分、棒だけが描画される余白を残す
-    let box_left_pos = UNIT;
+    function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main" }) {
+        if (!document.getElementById(svg_id)) {
+            document.write(`<svg id="${svg_id}" height="30mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke-opacity=".5">
+        <g id="boxes_${svg_id}" stroke="#ffd1ff" stroke-width="15">
+        </g>
+        <g stroke-linecap="round" stroke-linejoin="round">
+            <g stroke-width="15" id="glyphs_${svg_id}">
+            </g>
+        </g>
+    </g>
+</svg>`);
+        }
+        // 1 単位分、棒だけが描画される余白を残す
+        let box_left_pos = UNIT;
 
-    for (let i = 0; i < text_to_render.length; i++) {
-        const current_glyph = GLOBAL_GLYPH_TABLE[text_to_render[i]] ?? (() => { throw new Error(`Unknown glyph: ${text_to_render[i]}`) })();
+        for (let i = 0; i < syllables_to_render.length; i++) {
+            const current_glyph = GLOBAL_GLYPH_TABLE[syllables_to_render[i]] ?? (() => { throw new Error(`Unknown glyph: ${syllables_to_render[i]}`) })();
 
-        if (DEBUG_MODE)
-            document.getElementById("boxes").innerHTML += `<rect x="${box_left_pos + UNIT / 2}" y="${UNIT / 2}" width="${current_glyph.width}" height="${BOX_FULL_HEIGHT}" rx="0" ry="0" />`;
+            if (DEBUG_MODE)
+                document.getElementById(`boxes_${svg_id}`).innerHTML += `<rect x="${box_left_pos + UNIT / 2}" y="${UNIT / 2}" width="${current_glyph.width}" height="${BOX_FULL_HEIGHT}" rx="0" ry="0" />`;
 
-        let glyph = "";
+            let glyph = "";
 
-        for (let j = 0; j < current_glyph.paths.length; j++) {
-            glyph += current_glyph.paths[j];
+            for (let j = 0; j < current_glyph.paths.length; j++) {
+                glyph += current_glyph.paths[j];
+            }
+
+            document.getElementById(`glyphs_${svg_id}`).innerHTML += `<g transform="translate(${box_left_pos})">${glyph}</g>`;
+
+            box_left_pos += current_glyph.width;
         }
 
-        document.getElementById("glyphs_main").innerHTML += `<g transform="translate(${box_left_pos})">${glyph}</g>`;
+        if (DEBUG_MODE)
+            document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="baseline" d="m7.5 229.86h${box_left_pos + UNIT}" stroke="#ffff00" />`;
 
-        box_left_pos += current_glyph.width;
+        document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${box_left_pos + UNIT}" stroke="#800000" />`;
+
+        document.getElementById(svg_id).setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
     }
 
-    if (DEBUG_MODE)
-        document.getElementById("glyphs_main").innerHTML += `<path id="baseline" d="m7.5 229.86h${box_left_pos + UNIT}" stroke="#ffff00" />`;
+    render_word({
+        syllables_to_render: [
+            "phá", "bhá", "má",
+            "ṣá", "sá", "xá", "zá", "ṭá", "dhá", "ṇá",
+            "ḷá", "rá", "khá", "ghá", "há", "yá", "wá", "ʔá",
+        ], DEBUG_MODE: true
+    });
 
-    document.getElementById("glyphs_main").innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${box_left_pos + UNIT}" stroke="#800000" />`;
+    document.write("<br>");
 
-    document.getElementById("main").setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
+
+    render_word({
+        svg_id: "word1",
+        syllables_to_render: ["he", "ma", "sá", "ṇau", "ṭu"], DEBUG_MODE: false
+    });
+
+    document.write("<br>");
+
+    render_word({
+        svg_id: "word2",
+        syllables_to_render: ["xaQ", "li", "bho", "ḷo", "rí", "ya"], DEBUG_MODE: false
+    });
+
+    document.write("<br>");
+
+    render_word({
+        svg_id: "word3",
+        syllables_to_render: ["ze", "pha"], DEBUG_MODE: false
+    });
+
+    document.write("<br>");
+
+    
+    render_word({
+        svg_id: "word4",
+        syllables_to_render: ["khú", "wa", "dhe", "ṣъ"], DEBUG_MODE: false
+    });
+
+    document.write("<br>");
+
+    render_word({
+        svg_id: "word5",
+        syllables_to_render: ["ʔá", "ghai"], DEBUG_MODE: false
+    });
+
+
 </script>
 
 <h1>作った組み合わせ一覧</h1>
@@ -261,7 +288,7 @@
 <script>
     const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
 
-    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "z", "ṭ", "dh", "ṇ",  "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
+    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "z", "ṭ", "dh", "ṇ", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
     const list_of_vowels = ["a", "ъ", "á", "e", "i", "í", "u", "ú", "ai", "au"];
 
     // draw the HTML table
