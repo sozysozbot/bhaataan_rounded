@@ -83,7 +83,7 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
         }
         document.getElementById(`glyphs_${svg_id}`).innerHTML += `<g transform="translate(${box_left_pos})">${glyph}</g>`;
         if (DEBUG_MODE)
-            document.getElementById(`latin_${svg_id}`).innerHTML += `<text x="${box_left_pos + UNIT}" y="${UNIT * 4}" " fill="#000000">${syllables_to_render[i]}</text>`;
+            document.getElementById(`latin_${svg_id}`).innerHTML += `<text x="${box_left_pos + UNIT}" y="${UNIT * 4}" fill="#000000">${syllables_to_render[i]}</text>`;
         box_left_pos += current_glyph_width + GLOBAL_KERNING;
     }
     const axis_width = box_left_pos + UNIT - GLOBAL_KERNING;
