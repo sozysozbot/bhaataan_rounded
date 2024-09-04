@@ -51,16 +51,18 @@ const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
     "i": 75, "í": 75, "au": 75, "o": 60,
 };
 
+type Pragma = { type: "pragma", value: string };
+
 function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30, nautuhoma_e = true }
     : {
-        syllables_to_render: string[],
+        syllables_to_render: (string | Pragma)[],
         DEBUG_MODE: boolean,
         svg_id?: string,
         height?: number,
         nautuhoma_e?: boolean
     }) {
     if (!document.getElementById(svg_id)) {
-        document.write(`<svg id="${svg_id}" height="${height}mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        document.write(`<svg id="${svg_id}" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke-opacity="${DEBUG_MODE ? .5 : 1}">
         <g id="boxes_${svg_id}" stroke="#ffd1ff" stroke-width="${UNIT}">
         </g>
@@ -76,26 +78,37 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
     let box_left_pos = UNIT;
 
     for (let i = 0; i < syllables_to_render.length; i++) {
-        const constituents = get_constituents_from_syllable(syllables_to_render[i]);
-        const current_glyph_width = CONSONANT_CONTRIBUTION_TO_WIDTH[constituents.consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[constituents.vowel];
+        const syll = syllables_to_render[i];
+        if (typeof syll === "string") {
+            const constituents = get_constituents_from_syllable(syll);
+            const current_glyph_width = CONSONANT_CONTRIBUTION_TO_WIDTH[constituents.consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[constituents.vowel];
 
-        if (DEBUG_MODE)
-            document.getElementById(`boxes_${svg_id}`)!.innerHTML += `<rect x="${box_left_pos + UNIT / 2}" y="${UNIT / 2}" width="${current_glyph_width}" height="${BOX_FULL_HEIGHT}" rx="0" ry="0" />`;
+            if (DEBUG_MODE)
+                document.getElementById(`boxes_${svg_id}`)!.innerHTML += `<rect x="${box_left_pos + UNIT / 2}" y="${UNIT / 2}" width="${current_glyph_width}" height="${BOX_FULL_HEIGHT}" rx="0" ry="0" />`;
 
-        let glyph = "";
+            let glyph = "";
 
-        const paths = automatic(constituents, DEBUG_MODE);
+            const paths = automatic(constituents, DEBUG_MODE);
 
-        for (let j = 0; j < paths.length; j++) {
-            glyph += paths[j];
+            for (let j = 0; j < paths.length; j++) {
+                glyph += paths[j];
+            }
+
+            document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<g transform="translate(${box_left_pos})">${glyph}</g>`;
+
+            if (DEBUG_MODE)
+                document.getElementById(`latin_${svg_id}`)!.innerHTML += `<text x="${box_left_pos + UNIT}" y="${UNIT * 4}" fill="#000000">${syllables_to_render[i]}</text>`;
+
+            box_left_pos += current_glyph_width + GLOBAL_KERNING;
+        } else {
+            if (syll.value === "deactivate_nautuhoma_e") {
+                nautuhoma_e = false;
+            } else if (syll.value === "activate_nautuhoma_e") {
+                nautuhoma_e = true;
+            } else {
+                throw new Error(`Unknown pragma: ${syll.value}`);
+            }
         }
-
-        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<g transform="translate(${box_left_pos})">${glyph}</g>`;
-
-        if (DEBUG_MODE)
-            document.getElementById(`latin_${svg_id}`)!.innerHTML += `<text x="${box_left_pos + UNIT}" y="${UNIT * 4}" fill="#000000">${syllables_to_render[i]}</text>`;
-
-        box_left_pos += current_glyph_width + GLOBAL_KERNING;
     }
 
     const axis_width = box_left_pos + UNIT - GLOBAL_KERNING;
@@ -107,4 +120,5 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
         document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
 
     document.getElementById(svg_id)!.setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
+    document.getElementById(svg_id)!.setAttribute("height", `${height}mm`);
 }
