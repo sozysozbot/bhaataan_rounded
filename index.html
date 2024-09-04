@@ -285,3 +285,18 @@
     });
 </script>
 
+<script>
+    const samples = ["ja", "rú", "ṣi", "cá", "kí", "ká", "ta", "ḍi", "cá", "jau", "ká", "ṇa", "ḍi", "ná", "na", "phú", "pe", "nъ", "ko", "ṭá", "ná", "ṣo", "ya", "bhau", "rú", "ṣá", "nъ", "ʔa", "má", "ma", "bho", "ṇau", "ḍi", "ghi", "ká", "na", "gha", "ma", "ʔí", "da", "ká", "hí", "na", "ká", "ṇai", "sa", "ko", "dhe", "lъ", "ʔa", "ḍu", "ha", "zo", "ze", "ná", "he", "mъ",
+
+    "dí", "ʔo", "mъ", "ṣi", "bhai", "ḍi", "ʔo", "ṣa", "sí", "bha", "dho", "ḷo", "pi", "hí", "na", "zu", "cá", "kí", "ka", "dí", "na", "he", "mъ",
+
+    "ca", "jъ", "xi", "ta", "nau", "ni", "ja", "su", "ka", "ṣá", "gá", "ná","na", "ṣú", "sa", "ho", "má", "ṣi", "bhai", "ḍi", "hí", "na", "wo", "ghi", "tá", "nъ", "ʔá", "ghi", "dhe", "lъ", "ʔa", "ḍu", "ha", "zo", "ze", "ná", "he", "mъ", "ko", "ḍi", "ghi", "ghá", "ni", "zu", "bo", "ha", "ká", "sъ", "ḷo",
+
+    "ko", "mъ", "ʔú", "ro", "bhá", "ṣъ", "le", "xe", "ḷъ", "we", "nъ", "ta", "pъ", "kí", "ʔo", "mъ", "ʔa", "ṭa", "za", "dhe", "lъ", "ko", "bhau", "ko", "mъ", "ní", "ní", "na", "bha", "ṣъ", "ʔá", "ka", "bá", "ta"
+    ].map(syll => {
+        const { consonant, vowel } = get_constituents_from_syllable(syll.replaceAll(/ḍ/g, "dh"));
+        return CONSONANT_CONTRIBUTION_TO_WIDTH[consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[vowel] + 15;
+    });
+
+    alert(samples.reduce((acc, cur) => acc + cur, 0) / samples.length);
+</script>

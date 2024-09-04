@@ -1,7 +1,6 @@
 "use strict";
 const UNIT = 15;
-const GLOBAL_KERNING = UNIT;
-const BOX_FULL_HEIGHT = 19 * UNIT;
+const BOX_FULL_HEIGHT = 20 * UNIT;
 const BASE_CONSONANT = {
     "p": {
         paths: [
