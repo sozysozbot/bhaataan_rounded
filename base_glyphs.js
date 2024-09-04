@@ -1,5 +1,6 @@
 "use strict";
 const UNIT = 15;
+const GLOBAL_KERNING = 15;
 const BOX_FULL_HEIGHT = 19 * UNIT;
 const BASE_CONSONANT = {
     "p": {

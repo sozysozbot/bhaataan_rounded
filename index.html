@@ -1,16 +1,5 @@
 <h1>バート語の組版</h1>
 
-<svg id="main" height="30mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke-opacity=".5">
-        <g id="boxes_main" stroke="#ffd1ff" stroke-width="15">
-        </g>
-        <g stroke-linecap="round" stroke-linejoin="round">
-            <g stroke-width="15" id="glyphs_main">
-            </g>
-        </g>
-    </g>
-</svg>
-
 <script src="base_glyphs.js"></script>
 <script src="main.js"></script>
 
@@ -18,177 +7,177 @@
     const GLOBAL_GLYPH_TABLE = {
         "pha": {
             width: 135,
-            paths: automatic({ consonant: "p", vowel: "a", dotted: true })
+            constituents: ({ consonant: "p", vowel: "a", dotted: true })
         },
         "phá": {
             width: 135,
-            paths: automatic({ consonant: "p", vowel: "á", dotted: true })
+            constituents: ({ consonant: "p", vowel: "á", dotted: true })
         },
 
         "phai": {
             width: 135,
-            paths: automatic({ consonant: "p", vowel: "ai", dotted: true })
+            constituents: ({ consonant: "p", vowel: "ai", dotted: true })
         },
 
         "za": {
             width: 135,
-            paths: automatic({ consonant: "z", vowel: "a" })
+            constituents: ({ consonant: "z", vowel: "a" })
         },
         "zá": {
             width: 135,
-            paths: automatic({ consonant: "z", vowel: "á" })
+            constituents: ({ consonant: "z", vowel: "á" })
         },
         "ze": {
             width: 135,
-            paths: automatic({ consonant: "z", vowel: "e" })
+            constituents: ({ consonant: "z", vowel: "e" })
         },
         "zai": {
             width: 135,
-            paths: automatic({ consonant: "z", vowel: "ai" })
+            constituents: ({ consonant: "z", vowel: "ai" })
         },
         "gha": {
             width: 165,
-            paths: automatic({ consonant: "g", vowel: "a", dotted: true })
+            constituents: ({ consonant: "g", vowel: "a", dotted: true })
         },
         "ghá": {
             width: 165,
-            paths: automatic({ consonant: "g", vowel: "á", dotted: true })
+            constituents: ({ consonant: "g", vowel: "á", dotted: true })
         },
 
         "ghai": {
             width: 165,
-            paths: automatic({ consonant: "g", vowel: "ai", dotted: true })
+            constituents: ({ consonant: "g", vowel: "ai", dotted: true })
         },
 
         "ʔa": {
             width: 105,
-            paths: automatic({ consonant: "ʔ", vowel: "a" })
+            constituents: ({ consonant: "ʔ", vowel: "a" })
         },
 
         "ʔá": {
             width: 105,
-            paths: automatic({ consonant: "ʔ", vowel: "á" })
+            constituents: ({ consonant: "ʔ", vowel: "á" })
         },
 
         "ʔai": {
             width: 120,
-            paths: automatic({ consonant: "ʔ", vowel: "ai" })
+            constituents: ({ consonant: "ʔ", vowel: "ai" })
         },
         "khú": {
             width: 135,
-            paths: automatic({ consonant: "k", vowel: "ú", dotted: true })
+            constituents: ({ consonant: "k", vowel: "ú", dotted: true })
         },
         "wa": {
             width: 105,
-            paths: automatic({ consonant: "w", vowel: "a" })
+            constituents: ({ consonant: "w", vowel: "a" })
         },
         "dhe": {
             width: 105,
-            paths: automatic({ consonant: "d", vowel: "e", dotted: true })
+            constituents: ({ consonant: "d", vowel: "e", dotted: true })
         },
         "ṣъ": {
             width: 105,
-            paths: automatic({ consonant: "c", vowel: "ъ", dotted: true })
+            constituents: ({ consonant: "c", vowel: "ъ", dotted: true })
         },
         "he": {
             width: 105,
-            paths: automatic({ consonant: "h", vowel: "e" })
+            constituents: ({ consonant: "h", vowel: "e" })
         },
         "ma": {
             width: 135,
-            paths: automatic({ consonant: "m", vowel: "a" })
+            constituents: ({ consonant: "m", vowel: "a" })
         },
         "sá": {
             width: 105,
-            paths: automatic({ consonant: "s", vowel: "á" })
+            constituents: ({ consonant: "s", vowel: "á" })
         },
         "ṇau": {
             width: 165,
-            paths: automatic({ consonant: "n", vowel: "au", dotted: true })
+            constituents: ({ consonant: "n", vowel: "au", dotted: true })
         },
         "ṭu": {
             width: 105,
-            paths: automatic({ consonant: "t", vowel: "u", dotted: true })
+            constituents: ({ consonant: "t", vowel: "u", dotted: true })
         },
         "xaQ": {
             width: 135,
-            paths: automatic({ consonant: "x", vowel: "aQ" })
+            constituents: ({ consonant: "x", vowel: "aQ" })
         },
         "li": {
-            width: 165, paths: automatic({ consonant: "l", vowel: "i" })
+            width: 165, constituents: ({ consonant: "l", vowel: "i" })
         },
         "ḷi": {
-            width: 165, paths: automatic({ consonant: "l", vowel: "i", dotted: true })
+            width: 165, constituents: ({ consonant: "l", vowel: "i", dotted: true })
         },
         "bho": {
-            width: 165, paths: automatic({ consonant: "b", vowel: "o", dotted: true })
+            width: 165, constituents: ({ consonant: "b", vowel: "o", dotted: true })
         },
         "ḷo": {
-            width: 165, paths: automatic({ consonant: "l", vowel: "o", dotted: true })
+            width: 165, constituents: ({ consonant: "l", vowel: "o", dotted: true })
         },
         "rí": {
-            width: 165, paths: automatic({ consonant: "r", vowel: "í" })
+            width: 165, constituents: ({ consonant: "r", vowel: "í" })
         },
         "ya": {
-            width: 135, paths: automatic({ consonant: "j", vowel: "a", dotted: true })
+            width: 135, constituents: ({ consonant: "j", vowel: "a", dotted: true })
         },
 
         "sá": {
             width: 105,
-            paths: automatic({ consonant: "s", vowel: "á" })
+            constituents: ({ consonant: "s", vowel: "á" })
         },
 
         "wá": {
             width: 105,
-            paths: automatic({ consonant: "w", vowel: "á" })
+            constituents: ({ consonant: "w", vowel: "á" })
         },
         "dhá": {
             width: 105,
-            paths: automatic({ consonant: "d", vowel: "á", dotted: true })
+            constituents: ({ consonant: "d", vowel: "á", dotted: true })
         },
         "ṣá": {
             width: 105,
-            paths: automatic({ consonant: "c", vowel: "á", dotted: true })
+            constituents: ({ consonant: "c", vowel: "á", dotted: true })
         },
         "há": {
             width: 105,
-            paths: automatic({ consonant: "h", vowel: "á" })
+            constituents: ({ consonant: "h", vowel: "á" })
         },
         "má": {
             width: 135,
-            paths: automatic({ consonant: "m", vowel: "á" })
+            constituents: ({ consonant: "m", vowel: "á" })
         },
         "ṇá": {
             width: 105,
-            paths: automatic({ consonant: "n", vowel: "á", dotted: true })
+            constituents: ({ consonant: "n", vowel: "á", dotted: true })
         },
         "xá": {
             width: 135,
-            paths: automatic({ consonant: "x", vowel: "á" })
+            constituents: ({ consonant: "x", vowel: "á" })
         },
         "ṭá": {
             width: 135,
-            paths: automatic({ consonant: "t", vowel: "á", dotted: true })
+            constituents: ({ consonant: "t", vowel: "á", dotted: true })
         },
         "ḷá": {
             width: 105,
-            paths: automatic({ consonant: "l", vowel: "á", dotted: true })
+            constituents: ({ consonant: "l", vowel: "á", dotted: true })
         },
         "yá": {
             width: 135,
-            paths: automatic({ consonant: "j", vowel: "á", dotted: true })
+            constituents: ({ consonant: "j", vowel: "á", dotted: true })
         },
         "rá": {
             width: 105,
-            paths: automatic({ consonant: "r", vowel: "á" })
+            constituents: ({ consonant: "r", vowel: "á" })
         },
         "bhá": {
             width: 165,
-            paths: automatic({ consonant: "b", vowel: "á", dotted: true })
+            constituents: ({ consonant: "b", vowel: "á", dotted: true })
         },
         "khá": {
             width: 135,
-            paths: automatic({ consonant: "k", vowel: "á", dotted: true })
+            constituents: ({ consonant: "k", vowel: "á", dotted: true })
         },
     };
 
@@ -197,14 +186,15 @@
     function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main" }) {
         if (!document.getElementById(svg_id)) {
             document.write(`<svg id="${svg_id}" height="30mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke-opacity=".5">
-        <g id="boxes_${svg_id}" stroke="#ffd1ff" stroke-width="15">
+    <g fill="none" stroke-opacity="${DEBUG_MODE ? .5 : 1}">
+        <g id="boxes_${svg_id}" stroke="#ffd1ff" stroke-width="${UNIT}">
         </g>
         <g stroke-linecap="round" stroke-linejoin="round">
-            <g stroke-width="15" id="glyphs_${svg_id}">
+            <g stroke-width="${UNIT}" id="glyphs_${svg_id}">
             </g>
         </g>
     </g>
+    <g id="latin_${svg_id}" font-family="Arial" font-size="${UNIT * 3}" fill="#000000"></g>
 </svg>`);
         }
         // 1 単位分、棒だけが描画される余白を残す
@@ -218,19 +208,26 @@
 
             let glyph = "";
 
-            for (let j = 0; j < current_glyph.paths.length; j++) {
-                glyph += current_glyph.paths[j];
+            const paths = automatic(current_glyph.constituents, DEBUG_MODE);
+
+            for (let j = 0; j < paths.length; j++) {
+                glyph += paths[j];
             }
 
             document.getElementById(`glyphs_${svg_id}`).innerHTML += `<g transform="translate(${box_left_pos})">${glyph}</g>`;
 
-            box_left_pos += current_glyph.width;
+            if (DEBUG_MODE)
+                document.getElementById(`latin_${svg_id}`).innerHTML += `<text x="${box_left_pos + UNIT}" y="${UNIT * 4}" " fill="#000000">${syllables_to_render[i]}</text>`;
+
+            box_left_pos += current_glyph.width + GLOBAL_KERNING;
         }
 
-        if (DEBUG_MODE)
-            document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="baseline" d="m7.5 229.86h${box_left_pos + UNIT}" stroke="#ffff00" />`;
+        const axis_width = box_left_pos + UNIT - GLOBAL_KERNING;
 
-        document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${box_left_pos + UNIT}" stroke="#800000" />`;
+        if (DEBUG_MODE)
+            document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="baseline" d="m7.5 229.86h${axis_width}" stroke="#ffff00" />`;
+
+        document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
 
         document.getElementById(svg_id).setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT + UNIT}`);
     }
@@ -267,7 +264,7 @@
 
     document.write("<br>");
 
-    
+
     render_word({
         svg_id: "word4",
         syllables_to_render: ["khú", "wa", "dhe", "ṣъ"], DEBUG_MODE: false

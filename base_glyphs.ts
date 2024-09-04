@@ -1,4 +1,5 @@
 const UNIT = 15;
+const GLOBAL_KERNING = 15;
 const BOX_FULL_HEIGHT = 19 * UNIT;
 
 type Consonant = "ʔ" | "g" | "z" | "p" | "k" | "w" | "d" | "c" | "h" | "m" | "s" | "n" | "t" | "x" | "l" | "j" | "r" | "b";
