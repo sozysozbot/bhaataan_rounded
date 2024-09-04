@@ -1,11 +1,67 @@
-<h1>バート語の組版</h1>
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="UTF-8">
+    <title>バート語の組版</title>
+    <style>
+        body {
+            font-family: 'Times New Roman';
+        }
+    </style>
+</head>
+
+<h1>バート語の組版</h1>
 <script src="base_glyphs.js"></script>
 <script src="main.js"></script>
 <script src="render_word.js"></script>
 
+<h2>1. 元祖 5 単語</h2>
+
 <script>
     render_word({
+        svg_id: "word1",
+        syllables_to_render: ["he", "ma", "sá", "ṇau", "ṭu"], DEBUG_MODE: false
+    });
+    document.write("<br>");
+    render_word({
+        svg_id: "word2",
+        syllables_to_render: ["xaQ", "li", "bho", "ḷo", "rí", "ya"], DEBUG_MODE: false
+    });
+    document.write("<br>");
+    render_word({
+        svg_id: "word3",
+        syllables_to_render: ["ze", "pha"], DEBUG_MODE: false
+    });
+    document.write("<br>");
+    render_word({
+        svg_id: "word4",
+        syllables_to_render: ["khú", "wa", "dhe", "ṣъ"], DEBUG_MODE: false
+    });
+    document.write("<br>");
+    render_word({
+        svg_id: "word5",
+        syllables_to_render: ["ʔá", "ghai"], DEBUG_MODE: false
+    });
+</script>
+
+
+<h2>2. 母音の下に anchor すればいいやつ</h2>
+
+<script>
+    render_word({
+        svg_id: "consonant_a",
+        syllables_to_render: [
+            "pha", "bha", "ma",
+            "ṣa", "sa", "xa", "za", "ṭa", "dha", "ṇa",
+            "ḷa", "ra", "kha", "gha", "ha", "ya", "wa", "ʔa",
+        ], DEBUG_MODE: true
+    });
+
+    document.write("<br>");
+
+    render_word({
+        svg_id: "consonant_á",
         syllables_to_render: [
             "phá", "bhá", "má",
             "ṣá", "sá", "xá", "zá", "ṭá", "dhá", "ṇá",
@@ -15,42 +71,38 @@
 
     document.write("<br>");
 
-
     render_word({
-        svg_id: "word1",
-        syllables_to_render: ["he", "ma", "sá", "ṇau", "ṭu"], DEBUG_MODE: false
+        svg_id: "consonant_u",
+        syllables_to_render: [
+            "phu", "bhu", "mu",
+            "ṣu", "su", "xu", "zu", "ṭu", "dhu", "ṇu",
+            "ḷu", "ru", "khu", "ghu", "hu", "yu", "wu", "ʔu",
+        ], DEBUG_MODE: true
     });
 
     document.write("<br>");
 
     render_word({
-        svg_id: "word2",
-        syllables_to_render: ["xaQ", "li", "bho", "ḷo", "rí", "ya"], DEBUG_MODE: false
+        svg_id: "consonant_ú",
+        syllables_to_render: [
+            "phú", "bhú", "mú",
+            "ṣú", "sú", "xú", "zú", "ṭú", "dhú", "ṇú",
+            "ḷú", "rú", "khú", "ghú", "hú", "yú", "wú", "ʔú",
+        ], DEBUG_MODE: true
     });
 
     document.write("<br>");
 
     render_word({
-        svg_id: "word3",
-        syllables_to_render: ["ze", "pha"], DEBUG_MODE: false
+        svg_id: "consonant_ai",
+        syllables_to_render: [
+            "phai", "bhai", "mai",
+            "ṣai", "sai", "xai", "zai", "ṭai", "dhai", "ṇai",
+            "ḷai", "rai", "khai", "ghai", "hai", "yai", "wai", "ʔai",
+        ], DEBUG_MODE: true
     });
 
     document.write("<br>");
-
-
-    render_word({
-        svg_id: "word4",
-        syllables_to_render: ["khú", "wa", "dhe", "ṣъ"], DEBUG_MODE: false
-    });
-
-    document.write("<br>");
-
-    render_word({
-        svg_id: "word5",
-        syllables_to_render: ["ʔá", "ghai"], DEBUG_MODE: false
-    });
-
-
 </script>
 
 <h1>作った組み合わせ一覧</h1>
@@ -58,8 +110,8 @@
 <script>
     const list_of_defined = Object.keys(GLOBAL_GLYPH_TABLE);
 
-    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "z", "ṭ", "dh", "ṇ", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
-    const list_of_vowels = ["a", "ъ", "á", "e", "i", "í", "u", "ú", "ai", "au"];
+    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "x", "z", "ṭ", "dh", "ṇ", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
+    const list_of_vowels = ["a", "ъ", "aQ", "á", "e", "i", "í", "u", "ú", "o", "ai", "au"];
 
     // draw the HTML table
     document.write("<table border='1' cellpadding='5' cellspacing='0'>");
