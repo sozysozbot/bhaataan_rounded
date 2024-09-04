@@ -102,7 +102,11 @@ const GLOBAL_GLYPH_TABLE = {
     "ṭau": { width: 135 + 60 }, "dhau": { width: 105 + 60 }, "ṇau": { width: 105 + 60 }, "ḷau": { width: 105 + 60 }, "rau": { width: 105 + 60 },
     "khau": { width: 135 + 60 }, "ghau": { width: 165 + 60 },
     "hau": { width: 105 + 60 }, "yau": { width: 135 + 60 }, "wau": { width: 105 + 60 }, "ʔau": { width: 105 + 60 },
-    "bho": { width: 165 }, "ḷo": { width: 165 },
+    "pho": { width: 135 + 60 }, "bho": { width: 165 + 60 }, "mo": { width: 135 + 60 },
+    "ṣo": { width: 105 + 60 }, "so": { width: 105 + 60 }, "xo": { width: 135 + 60 }, "zo": { width: 135 + 60 },
+    "ṭo": { width: 135 + 60 }, "dho": { width: 105 + 60 }, "ṇo": { width: 105 + 60 }, "ḷo": { width: 105 + 60 }, "ro": { width: 105 + 60 },
+    "kho": { width: 135 + 60 }, "gho": { width: 165 + 60 },
+    "ho": { width: 105 + 60 }, "yo": { width: 135 + 60 }, "wo": { width: 105 + 60 }, "ʔo": { width: 105 + 60 },
 };
 function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main" }) {
     if (!document.getElementById(svg_id)) {
