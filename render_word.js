@@ -80,7 +80,11 @@ const GLOBAL_GLYPH_TABLE = {
     "ṭaQ": { width: 135 }, "dhaQ": { width: 105 }, "ṇaQ": { width: 105 }, "ḷaQ": { width: 105 }, "raQ": { width: 105 },
     "khaQ": { width: 135 }, "ghaQ": { width: 165 },
     "haQ": { width: 105 }, "yaQ": { width: 135 }, "waQ": { width: 105 }, "ʔaQ": { width: 105 },
-    "ṣъ": { width: 105 },
+    "phъ": { width: 135 }, "bhъ": { width: 165 }, "mъ": { width: 135 },
+    "ṣъ": { width: 105 }, "sъ": { width: 105 }, "xъ": { width: 135 }, "zъ": { width: 135 },
+    "ṭъ": { width: 135 }, "dhъ": { width: 105 }, "ṇъ": { width: 105 }, "ḷъ": { width: 105 }, "rъ": { width: 105 },
+    "khъ": { width: 135 }, "ghъ": { width: 165 },
+    "hъ": { width: 105 }, "yъ": { width: 135 }, "wъ": { width: 105 }, "ʔъ": { width: 105 },
     "ṇau": { width: 165 }, "li": { width: 165 }, "ḷi": { width: 165 },
     "bho": { width: 165 }, "ḷo": { width: 165 }, "rí": { width: 165 },
 };

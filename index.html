@@ -108,7 +108,7 @@
 
 <h2>2. 子音の上下にのみあるやつ</h2>
 
-<h3>2-1. 中央揃えの e および aQ</h3>
+<h3>2-1. 中央揃えの e および aQ および ъ</h3>
 
 <script>
     render_word({
@@ -128,6 +128,17 @@
             "phaQ", "bhaQ", "maQ",
             "ṣaQ", "saQ", "xaQ", "zaQ", "ṭaQ", "dhaQ", "ṇaQ",
             "ḷaQ", "raQ", "khaQ", "ghaQ", "haQ", "yaQ", "waQ", "ʔaQ",
+        ], DEBUG_MODE: true
+    });
+</script>
+
+<script>
+    render_word({
+        svg_id: "consonant_ъ",
+        syllables_to_render: [
+            "phъ", "bhъ", "mъ",
+            "ṣъ", "sъ", "xъ", "zъ", "ṭъ", "dhъ", "ṇъ",
+            "ḷъ", "rъ", "khъ", "ghъ", "hъ", "yъ", "wъ", "ʔъ",
         ], DEBUG_MODE: true
     });
 </script>
