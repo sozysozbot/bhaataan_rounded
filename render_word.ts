@@ -48,7 +48,7 @@ const CONSONANT_CONTRIBUTION_TO_WIDTH: { [key in BaseConsonant]: number } = {
 
 const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
     "a": 0, "á": 0, "u": 0, "ú": 0, "ai": 0, "e": 0, "aQ": 0, "ъ": 0,
-    "i": 60, "í": 60, "au": 60, "o": 60,
+    "i": 75, "í": 75, "au": 75, "o": 60,
 };
 
 function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30 }: { syllables_to_render: string[], DEBUG_MODE: boolean, svg_id?: string, height?: number }) {
