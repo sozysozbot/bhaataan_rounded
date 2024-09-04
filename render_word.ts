@@ -51,11 +51,9 @@ const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
     "i": 60, "í": 60, "au": 60, "o": 60,
 };
 
-function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main" }
-    : { syllables_to_render: string[], DEBUG_MODE: boolean, svg_id?: string }
-) {
+function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30 }: { syllables_to_render: string[], DEBUG_MODE: boolean, svg_id?: string, height?: number }) {
     if (!document.getElementById(svg_id)) {
-        document.write(`<svg id="${svg_id}" height="30mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        document.write(`<svg id="${svg_id}" height="${height}mm" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke-opacity="${DEBUG_MODE ? .5 : 1}">
         <g id="boxes_${svg_id}" stroke="#ffd1ff" stroke-width="${UNIT}">
         </g>
