@@ -16,6 +16,34 @@
 <script src="main.js"></script>
 <script src="render_word.js"></script>
 
+<h2>組み合わせ一覧</h2>
+
+<script>
+    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "x", "z", "ṭ", "dh", "ṇ", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
+    const list_of_vowels = ["a", "ъ", "aQ", "á", "e", "i", "í", "u", "ú", "o", "ai", "au"];
+
+    // draw the HTML table
+    document.write("<table border='1' cellpadding='5' cellspacing='0'>");
+    document.write("<tr>");
+    document.write("<td>↓C ＼ V→</td>");
+    for (let i = 0; i < list_of_vowels.length; i++) {
+        document.write(`<td>${list_of_vowels[i]}</td>`);
+    }
+    document.write("</tr>");
+
+    for (let i = 0; i < list_of_consonants.length; i++) {
+        document.write("<tr>");
+        document.write(`<td>${list_of_consonants[i]}</td>`);
+        for (let j = 0; j < list_of_vowels.length; j++) {
+            const current_combination = list_of_consonants[i] + list_of_vowels[j];
+            document.write(`<td>${current_combination}</td>`);
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+
+</script>
+
 <h2>1. 元祖 5 単語</h2>
 
 <script>
@@ -205,6 +233,7 @@
             "ca", "jъ", "xi", "ta", "nau", "ni", "ja", "su", "ka", "dhí", "ná"
         ], DEBUG_MODE: false, height: 20
     });
+    document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
     render_word({
         svg_id: "sample_without_nautu",
         syllables_to_render: [
@@ -221,12 +250,31 @@
         syllables_to_render: [
             "phe", "cú", "phai", "cъ", "ni", "xa", "te"], DEBUG_MODE: false, height: 20,
     });
+    document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
     render_word({
         svg_id: "sample2_without_nautu",
         syllables_to_render: [
             "phe", "cú", "phai", "cъ", "ni", "xa", "te"], DEBUG_MODE: false, height: 20, nautuhoma_e: false
     });
 </script>
+
+<h2>zíṣom</h2>
+
+<script>
+    render_word({
+        svg_id: "sample3",
+        syllables_to_render: [
+            "zí", "ṣo", "mъ"], DEBUG_MODE: false, height: 20,
+    });
+    document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
+    render_word({
+        svg_id: "sample3_without_nautu",
+        syllables_to_render: [
+            "zí", "ṣo", "mъ"], DEBUG_MODE: false, height: 20, nautuhoma_e: false
+    });
+</script>
+
+<h1>デバッグ用</h1>
 
 <script>
     render_word({
@@ -237,29 +285,3 @@
     });
 </script>
 
-<h1>組み合わせ一覧</h1>
-
-<script>
-    const list_of_consonants = ["ph", "bh", "m", "ṣ", "s", "x", "z", "ṭ", "dh", "ṇ", "ḷ", "r", "kh", "gh", "h", "w", "ʔ"];
-    const list_of_vowels = ["a", "ъ", "aQ", "á", "e", "i", "í", "u", "ú", "o", "ai", "au"];
-
-    // draw the HTML table
-    document.write("<table border='1' cellpadding='5' cellspacing='0'>");
-    document.write("<tr>");
-    document.write("<td>↓C ＼ V→</td>");
-    for (let i = 0; i < list_of_vowels.length; i++) {
-        document.write(`<td>${list_of_vowels[i]}</td>`);
-    }
-    document.write("</tr>");
-
-    for (let i = 0; i < list_of_consonants.length; i++) {
-        document.write("<tr>");
-        document.write(`<td>${list_of_consonants[i]}</td>`);
-        for (let j = 0; j < list_of_vowels.length; j++) {
-            const current_combination = list_of_consonants[i] + list_of_vowels[j];
-            document.write(`<td>${current_combination}</td>`);
-        }
-        document.write("</tr>");
-    }
-
-</script>
