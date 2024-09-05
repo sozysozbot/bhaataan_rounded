@@ -151,7 +151,7 @@ const BASE_CONSONANT = {
 };
 const VOWEL_CONTRIBUTION_TO_WIDTH = {
     "a": 0, "á": 0, "u": 0, "ú": 0, "ai": 0, "e": 0, "aQ": 0, "ъ": 0,
-    "i": 75, "í": 75, "au": 75, "o": 60,
+    "i": 75, "í": 75, "au": 75, "o": 45,
 };
 const VOWEL = {
     "á": {

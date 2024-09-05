@@ -164,7 +164,7 @@ type Vowel = "á" | "ai" | "e" | "ú" | "ъ" | "au" | "u" | "aQ" | "i" | "í" | 
 
 const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
     "a": 0, "á": 0, "u": 0, "ú": 0, "ai": 0, "e": 0, "aQ": 0, "ъ": 0,
-    "i": 75, "í": 75, "au": 75, "o": 60,
+    "i": 75, "í": 75, "au": 75, "o": 45,
 };
 
 const VOWEL: {
