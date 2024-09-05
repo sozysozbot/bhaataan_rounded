@@ -47,7 +47,7 @@ const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
 
 type Pragma = { type: "pragma", value: string };
 
-function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30, nautuhoma_e = true, GLOBAL_KERNING = 0, 棒の端をどれだけ余らせるか = 15, SPACE_WIDTH = UNIT * 10 }
+function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 20, nautuhoma_e = true, GLOBAL_KERNING = 0, 棒の端をどれだけ余らせるか = 15, SPACE_WIDTH = UNIT * 10 }
     : {
         syllables_to_render: (string | Pragma)[],
         DEBUG_MODE: boolean,
@@ -104,7 +104,7 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
 
             let glyph = "";
 
-            const paths = automatic(constituents, DEBUG_MODE);
+            const paths = make_syllable(constituents, DEBUG_MODE);
 
             for (let j = 0; j < paths.length; j++) {
                 glyph += paths[j];

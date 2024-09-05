@@ -51,7 +51,7 @@ function get_vowel_path_and_displacement(consonant: BaseConsonant, vowel: Vowel 
     throw new Error(`unreachable`);
 }
 
-function automatic({ consonant, vowel, dotted }: { consonant: BaseConsonant, vowel: Vowel | 'a', dotted: boolean }, is_debug_mode: boolean): string[] {
+function make_syllable({ consonant, vowel, dotted }: { consonant: BaseConsonant, vowel: Vowel | 'a', dotted: boolean }, is_debug_mode: boolean): string[] {
     const consonant_paths: string[] = call_consonant(consonant);
 
     const { vowel_paths, consonant_horizontal_displacement } = get_vowel_path_and_displacement(consonant, vowel, is_debug_mode);

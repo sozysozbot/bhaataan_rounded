@@ -44,7 +44,7 @@ function get_vowel_path_and_displacement(consonant, vowel, is_debug_mode) {
     dat.position;
     throw new Error(`unreachable`);
 }
-function automatic({ consonant, vowel, dotted }, is_debug_mode) {
+function make_syllable({ consonant, vowel, dotted }, is_debug_mode) {
     const consonant_paths = call_consonant(consonant);
     const { vowel_paths, consonant_horizontal_displacement } = get_vowel_path_and_displacement(consonant, vowel, is_debug_mode);
     const consonantal = (() => {

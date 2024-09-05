@@ -9,12 +9,15 @@
             font-family: 'Times New Roman';
         }
     </style>
+
+<script src="base_glyphs.js"></script>
+<script src="make_syllable.js"></script>
+<script src="render_word.js"></script>
 </head>
 
 <h1>バート語の組版</h1>
-<script src="base_glyphs.js"></script>
-<script src="main.js"></script>
-<script src="render_word.js"></script>
+
+<p>See <a href="http://jurliyuuri.com/bhaataan/">http://jurliyuuri.com/bhaataan/</a> for more context.</p>
 
 <h2>組み合わせ一覧</h2>
 
@@ -76,7 +79,7 @@
 
 <h2>2. 子音の下から直に生えるもの (a, á, u, ú, ai)</h2>
 
-<p>子音字母の下のアンカーポイントを起点として配置する</p>
+<p>子音字母の下のアンカーポイントを起点として配置する。base_glyphs.ts では <code>position: "lower_anchor"</code> と呼んでいる。</p>
 
 <script>
     render_word({
@@ -138,7 +141,7 @@
 
 <h2>2. 子音の上下に浮くもの (e, aQ, ъ)</h2>
 
-<p>中央揃えにより割とアリな配置になる</p>
+<p>中央揃えにより割とアリな配置になる。base_glyphs.ts では <code>position: "center"</code> と呼んでいる。</p>
 
 <script>
     render_word({
@@ -175,7 +178,7 @@
 
 <h2>3. 子音の上と右にあるやつ (i, í, au)</h2>
 
-<p>子音字母の上のアンカーポイントを起点として配置する</p>
+<p>子音字母の上のアンカーポイントを起点として配置する。base_glyphs.ts では <code>position: "upper_anchor"</code> と呼んでいる。</p>
 
 <script>
     render_word({
@@ -209,6 +212,7 @@
 
 <h2>4. 子音の上と左にあるやつ (o)</h2>
 
+<p>自身は固定位置で、子音を右にずらすことで配置する。base_glyphs.ts では <code>position: "vowel_is_static_but_displace_consonant"</code> と呼んでいる。</p>
 
 <script>
     render_word({

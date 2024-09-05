@@ -176,7 +176,7 @@ const VOWEL: {
         consonant_horizontal_displacement?: {
             [key in BaseConsonant]: number
         }
-    }| {
+    } | {
         paths: string[],
         position: "vowel_is_static_but_displace_consonant",
         consonant_horizontal_displacement?: {
@@ -188,26 +188,26 @@ const VOWEL: {
         paths: [
             "m0 0a29.539 28.776 0 0 1 8.8871 32.675 29.539 28.776 0 0 1-29.132 18.362 29.539 28.776 0 0 1-26.954-21.287"
         ],
-         position: "lower_anchor"
+        position: "lower_anchor"
     },
     "ai": {
         paths: [
             "m 0 -0.315 c -1.804 -0.065 -3.758 0 -5.563 0 c -47.022 0 -32.261 29.794 -11.386 29.674 c 21.608 -0.125 -15.838 10.909 -32.524 13.611a37.524 28.776 0 0 0 36.929 19.053 37.524 28.776 0 0 0 34.679-21.395"
         ],
-       position: "lower_anchor"
+        position: "lower_anchor"
     },
     "e": {
         paths: [
             "m-37.5 86.293s20.534-41.854 62.61-62.946"
         ],
-        
+
         position: "center",
     },
     "ú": {
         paths: [
             "m 0 0 c -1.804 -0.065 -3.758 0 -5.563 0 c -47.022 0 -26.556 29.119 -11.386 29.674 c 12.707 0.344 26.021 -0.571 38.734 -0.528 a38.084 28.776 0 0 1-29.773 32.645 38.084 28.776 0 0 1-44.665-20.804"
         ],
-         position: "lower_anchor"
+        position: "lower_anchor"
     },
     "ъ": {
         paths: [
