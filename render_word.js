@@ -44,11 +44,6 @@ function get_constituents_from_syllable(input) {
     })();
     return { consonant, vowel: vowel, dotted };
 }
-const CONSONANT_CONTRIBUTION_TO_WIDTH = { "p": 150, "b": 180, "m": 150, "c": 135, "s": 120, "x": 150, "z": 150, "t": 135, "d": 120, "n": 120, "l": 120, "r": 120, "k": 150, "g": 180, "h": 120, "j": 135, "w": 120, "ʔ": 120 };
-const VOWEL_CONTRIBUTION_TO_WIDTH = {
-    "a": 0, "á": 0, "u": 0, "ú": 0, "ai": 0, "e": 0, "aQ": 0, "ъ": 0,
-    "i": 75, "í": 75, "au": 75, "o": 60,
-};
 function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 20, nautuhoma_e = true, GLOBAL_KERNING = 0, 棒の端をどれだけ余らせるか = 15, SPACE_WIDTH = UNIT * 10 }) {
     if (!document.getElementById(svg_id)) {
         document.write(`<svg id="${svg_id}" version="1.1" xmlns="http://www.w3.org/2000/svg">
