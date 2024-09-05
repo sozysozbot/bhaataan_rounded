@@ -53,7 +53,7 @@ const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
 
 type Pragma = { type: "pragma", value: string };
 
-function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30, nautuhoma_e = true, GLOBAL_KERNING = 0, 棒の端をどれだけ余らせるか = 15 }
+function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30, nautuhoma_e = true, GLOBAL_KERNING = 0, 棒の端をどれだけ余らせるか = 15, SPACE_WIDTH = UNIT * 10 }
     : {
         syllables_to_render: (string | Pragma)[],
         DEBUG_MODE: boolean,
@@ -61,7 +61,8 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
         height?: number,
         nautuhoma_e?: boolean,
         GLOBAL_KERNING?: number,
-        棒の端をどれだけ余らせるか?: number
+        棒の端をどれだけ余らせるか?: number,
+        SPACE_WIDTH?: number,
     }) {
     if (!document.getElementById(svg_id)) {
         document.write(`<svg id="${svg_id}" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +95,6 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
                 if (nautuhoma_e)
                     document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
 
-                const SPACE_WIDTH = UNIT * 10;
                 box_left_pos += SPACE_WIDTH;
                 word_start = box_left_pos - 棒の端をどれだけ余らせるか;
                 continue;
