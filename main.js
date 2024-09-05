@@ -5,33 +5,34 @@ function call_consonant(consonant) {
 function call_dot_at([x, y], debug_mode) {
     return `<path d="m${x} ${y}v3a3 3 0 0 0 0-6 3 3 0 0 0 0 6v-3" stroke="${debug_mode ? "#800080" : "#000000"}" />`;
 }
-function call_vowel_anchored_at(vowel, [x, y], debug_mode) {
-    if (VOWEL[vowel].anchored) {
-        return `<g transform="translate(${x} ${y})">
-        ${VOWEL[vowel].paths.map(d => `<path stroke="${debug_mode ? "#0000ff" : "#000"}" d="${d}" />`).join("")}
-    </g>`;
-    }
-    else {
-        throw new Error(`Vowel ${vowel} should not be anchored`);
-    }
-}
-function call_vowel_non_anchored(vowel, consonant, debug_mode) {
-    const dat = VOWEL[vowel];
-    if (!dat.anchored) {
-        const x = dat.self_horizontal_displacement(consonant);
-        return `<g transform="translate(${x ?? 0})">${VOWEL[vowel].paths.map(d => `<path stroke="${debug_mode ? "#0000ff" : "#000"}" d="${d}" />`)}</g>`;
-    }
-    else {
-        throw new Error(`Vowel ${vowel} should be anchored`);
-    }
-}
 function automatic({ consonant, vowel, dotted }, is_debug_mode) {
     const consonant_paths = call_consonant(consonant);
-    const vowel_paths = vowel === 'a' ? "" : VOWEL[vowel].anchored === "lower" ?
-        call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].lower_anchor, is_debug_mode) :
-        VOWEL[vowel].anchored === "upper" ?
-            call_vowel_anchored_at(vowel, BASE_CONSONANT[consonant].upper_anchor, is_debug_mode) :
-            call_vowel_non_anchored(vowel, consonant, is_debug_mode);
+    const vowel_paths = (() => {
+        if (vowel === 'a') {
+            return "";
+        }
+        const dat = VOWEL[vowel];
+        if (dat.position === "lower_anchor") {
+            const [x, y] = BASE_CONSONANT[consonant].lower_anchor;
+            return `<g transform="translate(${x} ${y})">
+                ${dat.paths.map(d => `<path stroke="${is_debug_mode ? "#0000ff" : "#000"}" d="${d}" />`).join("")}
+            </g>`;
+        }
+        if (dat.position === "upper_anchor") {
+            const [x, y] = BASE_CONSONANT[consonant].upper_anchor;
+            return `<g transform="translate(${x} ${y})">
+                ${dat.paths.map(d => `<path stroke="${is_debug_mode ? "#0000ff" : "#000"}" d="${d}" />`).join("")}
+            </g>`;
+        }
+        if (dat.position == "center" || dat.position === "vowel_is_static_but_displace_consonant") {
+            const x = dat.self_horizontal_displacement(consonant);
+            return `<g transform="translate(${x ?? 0})">${dat.paths.map(d => `<path stroke="${is_debug_mode ? "#0000ff" : "#000"}" d="${d}" />`)}</g>`;
+        }
+        else {
+            dat.position;
+            throw new Error(`unreachable`);
+        }
+    })();
     const consonant_horizontal_displacement = vowel === 'a' || VOWEL[vowel].anchored ?
         0
         : VOWEL[vowel]?.consonant_horizontal_displacement?.[consonant] ?? 0;
