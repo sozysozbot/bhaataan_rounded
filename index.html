@@ -308,7 +308,7 @@
         "ko", "mъ", "ʔú", "ro", "bhá", "ṣъ", "le", "xe", "ḷъ", "we", "nъ", "ta", "pъ", "kí", "ʔo", "mъ", "ʔa", "ṭa", "za", "dhe", "lъ", "ko", "bhau", "ko", "mъ", "ní", "ní", "na", "bha", "ṣъ", "ʔá", "ka", "bá", "ta"
     ].map(syll => {
         const { consonant, vowel } = get_constituents_from_syllable(syll.replaceAll(/ḍ/g, "dh"));
-        return CONSONANT_CONTRIBUTION_TO_WIDTH[consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[vowel] + 15;
+        return CONSONANT_CONTRIBUTION_TO_WIDTH[consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[vowel];
     });
 
     // alert(samples.reduce((acc, cur) => acc + cur, 0) / samples.length);

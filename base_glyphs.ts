@@ -196,7 +196,7 @@ const VOWEL: {
             "m0 86.293s20.534-41.854 62.61-62.946"
         ],
         anchored: false,
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 30
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 37.5
     },
     "ú": {
         paths: [
@@ -209,7 +209,7 @@ const VOWEL: {
             "m0 268.51 37.123-18.117"
         ],
         anchored: false,
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 12
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 19.5
     },
     "au": {
         paths: [
@@ -226,7 +226,7 @@ const VOWEL: {
     "aQ": {
         paths: ["m0 262.6c19.509-39.844 37.87 27.063 58.487-13.465"],
         anchored: false,
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 20
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 27.5
     },
     "i": {
         paths: [

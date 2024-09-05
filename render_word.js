@@ -45,11 +45,11 @@ function get_constituents_from_syllable(input) {
     return { consonant, vowel: vowel, dotted };
 }
 const CONSONANT_CONTRIBUTION_TO_WIDTH = {
-    "p": 135, "b": 165, "m": 135,
-    "c": 120, "s": 105, "x": 135, "z": 135,
-    "t": 120, "d": 105, "n": 105, "l": 105, "r": 105,
-    "k": 135, "g": 165,
-    "h": 105, "j": 120, "w": 105, "ʔ": 105,
+    "p": 135 + 15, "b": 165 + 15, "m": 135 + 15,
+    "c": 120 + 15, "s": 105 + 15, "x": 135 + 15, "z": 135 + 15,
+    "t": 120 + 15, "d": 105 + 15, "n": 105 + 15, "l": 105 + 15, "r": 105 + 15,
+    "k": 135 + 15, "g": 165 + 15,
+    "h": 105 + 15, "j": 120 + 15, "w": 105 + 15, "ʔ": 105 + 15,
 };
 const VOWEL_CONTRIBUTION_TO_WIDTH = {
     "a": 0, "á": 0, "u": 0, "ú": 0, "ai": 0, "e": 0, "aQ": 0, "ъ": 0,
@@ -85,7 +85,7 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
                 continue;
             }
             const constituents = get_constituents_from_syllable(syll);
-            const current_glyph_width = CONSONANT_CONTRIBUTION_TO_WIDTH[constituents.consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[constituents.vowel] + 15;
+            const current_glyph_width = CONSONANT_CONTRIBUTION_TO_WIDTH[constituents.consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[constituents.vowel];
             if (DEBUG_MODE) {
                 const BOX_BORDER_WIDTH = UNIT;
                 document.getElementById(`boxes_${svg_id}`).innerHTML += `<rect x="${box_left_pos + BOX_BORDER_WIDTH / 2}" y="${BOX_BORDER_WIDTH / 2}" width="${current_glyph_width - BOX_BORDER_WIDTH}" height="${BOX_FULL_HEIGHT - BOX_BORDER_WIDTH}" rx="0" ry="0" />`;
