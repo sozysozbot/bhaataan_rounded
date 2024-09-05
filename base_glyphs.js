@@ -172,13 +172,7 @@ const VOWEL = {
             "m0 86.293s20.534-41.854 62.61-62.946"
         ],
         anchored: false,
-        self_horizontal_displacement: {
-            "p": 135 / 2 - 30, "b": 165 / 2 - 30, "m": 135 / 2 - 30,
-            "c": 105 / 2 - 30, "s": 105 / 2 - 30, "x": 135 / 2 - 30, "z": 135 / 2 - 30,
-            "t": 135 / 2 - 30, "d": 105 / 2 - 30, "n": 105 / 2 - 30, "l": 105 / 2 - 30, "r": 105 / 2 - 30,
-            "k": 135 / 2 - 30, "g": 165 / 2 - 30,
-            "h": 105 / 2 - 30, "j": 135 / 2 - 30, "w": 105 / 2 - 30, "ʔ": 105 / 2 - 30,
-        }
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 30
     },
     "ú": {
         paths: [
@@ -191,13 +185,7 @@ const VOWEL = {
             "m0 268.51 37.123-18.117"
         ],
         anchored: false,
-        self_horizontal_displacement: {
-            "p": 135 / 2 - 12, "b": 165 / 2 - 12, "m": 135 / 2 - 12,
-            "c": 105 / 2 - 12, "s": 105 / 2 - 12, "x": 135 / 2 - 12, "z": 135 / 2 - 12,
-            "t": 135 / 2 - 12, "d": 105 / 2 - 12, "n": 105 / 2 - 12, "l": 105 / 2 - 12, "r": 105 / 2 - 12,
-            "k": 135 / 2 - 12, "g": 165 / 2 - 12,
-            "h": 105 / 2 - 12, "j": 135 / 2 - 12, "w": 105 / 2 - 12, "ʔ": 105 / 2 - 12,
-        }
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 12
     },
     "au": {
         paths: [
@@ -214,13 +202,7 @@ const VOWEL = {
     "aQ": {
         paths: ["m0 262.6c19.509-39.844 37.87 27.063 58.487-13.465"],
         anchored: false,
-        self_horizontal_displacement: {
-            "p": 135 / 2 - 20, "b": 165 / 2 - 20, "m": 135 / 2 - 20,
-            "c": 105 / 2 - 20, "s": 105 / 2 - 20, "x": 135 / 2 - 20, "z": 135 / 2 - 20,
-            "t": 135 / 2 - 20, "d": 105 / 2 - 20, "n": 105 / 2 - 20, "l": 105 / 2 - 20, "r": 105 / 2 - 20,
-            "k": 135 / 2 - 20, "g": 165 / 2 - 20,
-            "h": 105 / 2 - 20, "j": 135 / 2 - 20, "w": 105 / 2 - 20, "ʔ": 105 / 2 - 20,
-        }
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 20
     },
     "i": {
         paths: [
@@ -240,7 +222,7 @@ const VOWEL = {
             "m30 229.79c0.40867-47.88-0.1058-95.619 0-143.5"
         ],
         anchored: false,
-        self_horizontal_displacement: {},
+        self_horizontal_displacement: c => 0,
         consonant_horizontal_displacement: {
             "p": 45, "b": 30, "m": 45,
             "c": 45, "s": 30, "x": 30, "z": 30,

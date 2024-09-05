@@ -18,7 +18,7 @@ function call_vowel_anchored_at(vowel, [x, y], debug_mode) {
 function call_vowel_non_anchored(vowel, consonant, debug_mode) {
     const dat = VOWEL[vowel];
     if (!dat.anchored) {
-        const x = dat.self_horizontal_displacement[consonant];
+        const x = dat.self_horizontal_displacement(consonant);
         return `<g transform="translate(${x ?? 0})">${VOWEL[vowel].paths.map(d => `<path stroke="${debug_mode ? "#0000ff" : "#000"}" d="${d}" />`)}</g>`;
     }
     else {
