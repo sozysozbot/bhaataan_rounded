@@ -285,7 +285,14 @@
     });
 </script>
 
+<h1>文章を組む</h1>
+
 <script>
+    render_word({
+        svg_id: "sentence",
+        syllables_to_render: [
+           "ko", "mъ", " ", "ʔú", "ro", " ", "bhá", "ṣъ",  "le", "xe", "ḷъ", " ", "we", "nъ", "ta", "pъ", " ", "kí", "ʔo", "mъ", " ", "ʔa", "ṭa", "za", "dhe", "lъ", " ", "ko", "bhau", " ", "ko", "mъ", " ", "ní", "ní", "na", " ", "bha", "ṣъ"," ", "ʔá", "ka", "bá", "ta" ], DEBUG_MODE: false, height: 10,
+    });
     const samples = ["ja", "rú", "ṣi", "cá", "kí", "ká", "ta", "ḍi", "cá", "jau", "ká", "ṇa", "ḍi", "ná", "na", "phú", "pe", "nъ", "ko", "ṭá", "ná", "ṣo", "ya", "bhau", "rú", "ṣá", "nъ", "ʔa", "má", "ma", "bho", "ṇau", "ḍi", "ghi", "ká", "na", "gha", "ma", "ʔí", "da", "ká", "hí", "na", "ká", "ṇai", "sa", "ko", "dhe", "lъ", "ʔa", "ḍu", "ha", "zo", "ze", "ná", "he", "mъ",
 
     "dí", "ʔo", "mъ", "ṣi", "bhai", "ḍi", "ʔo", "ṣa", "sí", "bha", "dho", "ḷo", "pi", "hí", "na", "zu", "cá", "kí", "ka", "dí", "na", "he", "mъ",
@@ -298,5 +305,5 @@
         return CONSONANT_CONTRIBUTION_TO_WIDTH[consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[vowel] + 15;
     });
 
-    alert(samples.reduce((acc, cur) => acc + cur, 0) / samples.length);
+   // alert(samples.reduce((acc, cur) => acc + cur, 0) / samples.length);
 </script>

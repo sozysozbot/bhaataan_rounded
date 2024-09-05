@@ -53,14 +53,15 @@ const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
 
 type Pragma = { type: "pragma", value: string };
 
-function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30, nautuhoma_e = true, GLOBAL_KERNING = 0 }
+function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height = 30, nautuhoma_e = true, GLOBAL_KERNING = 0, 棒の端をどれだけ余らせるか = 15 }
     : {
         syllables_to_render: (string | Pragma)[],
         DEBUG_MODE: boolean,
         svg_id?: string,
         height?: number,
         nautuhoma_e?: boolean,
-        GLOBAL_KERNING?: number
+        GLOBAL_KERNING?: number,
+        棒の端をどれだけ余らせるか?: number
     }) {
     if (!document.getElementById(svg_id)) {
         document.write(`<svg id="${svg_id}" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -75,16 +76,34 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
     <g id="latin_${svg_id}" font-family="Arial" font-size="${UNIT * 3}" fill="#000000"></g>
 </svg>`);
     }
-    // 1 単位分、棒だけが描画される余白を残す
-    let box_left_pos = UNIT;
+
+    let word_start = 0;
+
+    let box_left_pos = 棒の端をどれだけ余らせるか;
 
     for (let i = 0; i < syllables_to_render.length; i++) {
         const syll = syllables_to_render[i];
         if (typeof syll === "string") {
+
+            if (syll === " ") {
+                const axis_width = box_left_pos - word_start + UNIT - GLOBAL_KERNING;
+
+                if (DEBUG_MODE)
+                    document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="baseline" d="m${word_start + 7.5} 229.86h${axis_width}" stroke="#ffff00" />`;
+
+                if (nautuhoma_e)
+                    document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
+
+                const SPACE_WIDTH = UNIT * 10;
+                box_left_pos += SPACE_WIDTH;
+                word_start = box_left_pos - 棒の端をどれだけ余らせるか;
+                continue;
+            }
+
             const constituents = get_constituents_from_syllable(syll);
             const current_glyph_width = CONSONANT_CONTRIBUTION_TO_WIDTH[constituents.consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[constituents.vowel] + 15;
 
-            if (DEBUG_MODE){
+            if (DEBUG_MODE) {
                 const BOX_BORDER_WIDTH = UNIT;
                 document.getElementById(`boxes_${svg_id}`)!.innerHTML += `<rect x="${box_left_pos + BOX_BORDER_WIDTH / 2}" y="${BOX_BORDER_WIDTH / 2}" width="${current_glyph_width - BOX_BORDER_WIDTH}" height="${BOX_FULL_HEIGHT - BOX_BORDER_WIDTH}" rx="0" ry="0" />`;
             }
@@ -114,14 +133,14 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
         }
     }
 
-    const axis_width = box_left_pos + UNIT - GLOBAL_KERNING;
+    const axis_width = box_left_pos - word_start + 棒の端をどれだけ余らせるか - GLOBAL_KERNING;
 
     if (DEBUG_MODE)
-        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="baseline" d="m7.5 229.86h${axis_width}" stroke="#ffff00" />`;
+        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="baseline" d="m${word_start + 7.5} 229.86h${axis_width}" stroke="#ffff00" />`;
 
     if (nautuhoma_e)
-        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m7.5 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
+        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
 
-    document.getElementById(svg_id)!.setAttribute("viewBox", `0 0 ${box_left_pos + UNIT * 2} ${BOX_FULL_HEIGHT}`);
+    document.getElementById(svg_id)!.setAttribute("viewBox", `0 0 ${box_left_pos + 棒の端をどれだけ余らせるか * 2} ${BOX_FULL_HEIGHT}`);
     document.getElementById(svg_id)!.setAttribute("height", `${height}mm`);
 }
