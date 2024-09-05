@@ -169,11 +169,11 @@ const VOWEL = {
     },
     "e": {
         paths: [
-            "m0 86.293s20.534-41.854 62.61-62.946"
+            "m-37.5 86.293s20.534-41.854 62.61-62.946"
         ],
         anchored: false,
         position: "center",
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 37.5
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2
     },
     "ú": {
         paths: [
@@ -183,11 +183,11 @@ const VOWEL = {
     },
     "ъ": {
         paths: [
-            "m0 268.51 37.123-18.117"
+            "m-19.5 268.51 37.123-18.117"
         ],
         anchored: false,
         position: "center",
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 19.5
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2
     },
     "au": {
         paths: [
@@ -204,10 +204,10 @@ const VOWEL = {
         position: "lower_anchor"
     },
     "aQ": {
-        paths: ["m0 262.6c19.509-39.844 37.87 27.063 58.487-13.465"],
+        paths: ["m-27.5 262.6c19.509-39.844 37.87 27.063 58.487-13.465"],
         anchored: false,
         position: "center",
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 - 27.5
+        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2
     },
     "i": {
         paths: [
