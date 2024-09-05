@@ -38,13 +38,7 @@ function get_constituents_from_syllable(input: string): { consonant: BaseConsona
     return { consonant, vowel: vowel as Vowel, dotted };
 }
 
-const CONSONANT_CONTRIBUTION_TO_WIDTH: { [key in BaseConsonant]: number } = {
-    "p": 135 + 15, "b": 165 + 15, "m": 135 + 15,
-    "c": 120 + 15, "s": 105 + 15, "x": 135 + 15, "z": 135 + 15,
-    "t": 120 + 15, "d": 105 + 15, "n": 105 + 15, "l": 105 + 15, "r": 105 + 15,
-    "k": 135 + 15, "g": 165 + 15,
-    "h": 105 + 15, "j": 120 + 15, "w": 105 + 15, "ʔ": 105 + 15,
-};
+const CONSONANT_CONTRIBUTION_TO_WIDTH: { [key in BaseConsonant]: number } = { "p": 150, "b": 180, "m": 150, "c": 135, "s": 120, "x": 150, "z": 150, "t": 135, "d": 120, "n": 120, "l": 120, "r": 120, "k": 150, "g": 180, "h": 120, "j": 135, "w": 120, "ʔ": 120 };
 
 const VOWEL_CONTRIBUTION_TO_WIDTH: { [key in Vowel | "a"]: number } = {
     "a": 0, "á": 0, "u": 0, "ú": 0, "ai": 0, "e": 0, "aQ": 0, "ъ": 0,
