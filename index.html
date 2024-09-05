@@ -19,6 +19,15 @@
 
 <p>See <a href="http://jurliyuuri.com/bhaataan/">http://jurliyuuri.com/bhaataan/</a> for more context.</p>
 
+<h2>基本構成</h2>
+
+<p>次のような構成で作っている。現状、SVG 上では 1 単位を 15 mm としている。</p>
+
+<img src="arrangement.svg" height="300">
+
+<p>グリフ幅は単位の整数倍であり、子音の固有幅 {"p":10, "b":12, "m":10, "c":9, "s":8, "x":10, "z":10, "t":9, "d":8, "n":8, "l":8, "r":8, "k":10, "g":12, "h":8, "j":9, "w":8, "ʔ":8} (2024/09/06 現在) に対して、横幅を占有する母音については追加幅 {
+    "i": 5, "í": 5, "au": 5, "o": 4 } を足し算するという単純な方法で算出している。</p>
+
 <h2>組み合わせ一覧</h2>
 
 <script>
@@ -285,7 +294,28 @@
         svg_id: "zau",
         syllables_to_render: [
             "zau"
-        ], DEBUG_MODE: true, height: 20
+        ], DEBUG_MODE: true, height: 60
+    });
+
+    render_word({
+        svg_id: "újo",
+        syllables_to_render: [
+            "ʔú", "jo"
+        ], DEBUG_MODE: true, height: 60
+    });
+
+    render_word({
+        svg_id: "úná",
+        syllables_to_render: [
+            "ʔú", "ná"
+        ], DEBUG_MODE: true, height: 60
+    });
+
+    render_word({
+        svg_id: "kádai",
+        syllables_to_render: [
+            "ká", "dai"
+        ], DEBUG_MODE: true, height: 60
     });
 </script>
 
