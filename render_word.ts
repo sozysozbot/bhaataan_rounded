@@ -130,10 +130,10 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
     const axis_width = box_left_pos - word_start + 棒の端をどれだけ余らせるか - GLOBAL_KERNING;
 
     if (DEBUG_MODE)
-        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="baseline" d="m${word_start + 7.5} 229.86h${axis_width}" stroke="#ffff00" />`;
+        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="baseline" d="m${word_start + 7.5} 228.75h${axis_width}" stroke="#ffff00" />`;
 
     if (nautuhoma_e)
-        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 86.366h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
+        document.getElementById(`glyphs_${svg_id}`)!.innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 86.25h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
 
     document.getElementById(svg_id)!.setAttribute("viewBox", `0 0 ${box_left_pos + 棒の端をどれだけ余らせるか * 2} ${BOX_FULL_HEIGHT}`);
     document.getElementById(svg_id)!.setAttribute("height", `${height}mm`);
