@@ -175,7 +175,6 @@ const VOWEL: {
         paths: string[],
         anchored: false,
         position: "center",
-        self_horizontal_displacement: (c: BaseConsonant) => number,
         consonant_horizontal_displacement?: {
             [key in string]: number
         }
@@ -183,7 +182,6 @@ const VOWEL: {
         paths: string[],
         anchored: false,
         position: "vowel_is_static_but_displace_consonant",
-        self_horizontal_displacement: (c: BaseConsonant) => number,
         consonant_horizontal_displacement?: {
             [key in string]: number
         }
@@ -207,7 +205,6 @@ const VOWEL: {
         ],
         anchored: false,
         position: "center",
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2
     },
     "ú": {
         paths: [
@@ -221,7 +218,6 @@ const VOWEL: {
         ],
         anchored: false,
         position: "center",
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 
     },
     "au": {
         paths: [
@@ -241,7 +237,6 @@ const VOWEL: {
         paths: ["m-27.5 262.6c19.509-39.844 37.87 27.063 58.487-13.465"],
         anchored: false,
         position: "center",
-        self_horizontal_displacement: c => CONSONANT_CONTRIBUTION_TO_WIDTH[c] / 2 
     },
     "i": {
         paths: [
@@ -265,7 +260,6 @@ const VOWEL: {
         ],
         anchored: false,
         position: "vowel_is_static_but_displace_consonant",
-        self_horizontal_displacement: c => 0,
         consonant_horizontal_displacement: {
             "p": 45, "b": 30, "m": 45,
             "c": 45, "s": 30, "x": 30, "z": 30,

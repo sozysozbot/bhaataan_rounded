@@ -30,17 +30,21 @@ function automatic({ consonant, vowel, dotted }, is_debug_mode) {
                 consonant_horizontal_displacement: 0
             };
         }
-        if (dat.position == "center" || dat.position === "vowel_is_static_but_displace_consonant") {
-            const x = dat.self_horizontal_displacement(consonant);
+        if (dat.position == "center") {
+            const translate_x = CONSONANT_CONTRIBUTION_TO_WIDTH[consonant] / 2;
             return {
-                vowel_paths: `<g transform="translate(${x})">${dat.paths.map(d => `<path stroke="${is_debug_mode ? "#0000ff" : "#000"}" d="${d}" />`)}</g>`,
+                vowel_paths: `<g transform="translate(${translate_x})">${dat.paths.map(d => `<path stroke="${is_debug_mode ? "#0000ff" : "#000"}" d="${d}" />`)}</g>`,
                 consonant_horizontal_displacement: dat.consonant_horizontal_displacement?.[consonant] ?? 0
             };
         }
-        else {
-            dat.position;
-            throw new Error(`unreachable`);
+        if (dat.position === "vowel_is_static_but_displace_consonant") {
+            return {
+                vowel_paths: `<g transform="translate(0)">${dat.paths.map(d => `<path stroke="${is_debug_mode ? "#0000ff" : "#000"}" d="${d}" />`).join("")}</g>`,
+                consonant_horizontal_displacement: dat.consonant_horizontal_displacement?.[consonant] ?? 0
+            };
         }
+        dat.position;
+        throw new Error(`unreachable`);
     })();
     const consonantal = (() => {
         if (dotted) {
