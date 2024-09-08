@@ -323,8 +323,6 @@
 
 <h1>文章を組む</h1>
 
-<h2>そのまま</h2>
-
 <script>
     const kom_úro = [
         "ko", "mъ", " ", "ʔú", "ro", " ", "bhá", "ṣъ", "le", "xe", "ḷъ", " ", "we", "nъ", "ta", "pъ", " ", "kí", "ʔo", "mъ", " ", "ʔa", "ṭa", "za", "dhe", "lъ", " ", "ko", "bhau", " ", "ko", "mъ", " ", "ní", "ní", "na", " ", "bha", "ṣъ", " ", "ʔá", "ka", "bá", "ta"];
@@ -340,21 +338,6 @@
         syllables_to_render: ["he", "ma", "sá", "ṇau", "ṭu", " ", "xaQ", "li", "bho", "ḷo", "rí", "ya", " ", "ze", "pha", " ", "khú", "wa", "dhe", "ṣъ", " ", "ʔá", "ghai"], DEBUG_MODE: false, height: 10, SPACE_WIDTH: 90
     });
 </script>
-
-<h2>縦に 5.3 %（19 分の 1）引き延ばし</h2>
-
-<div style="transform: scaleY(calc(20 / 19))">
-    <script>
-            render_word({ svg_id: "sentence3", syllables_to_render: kom_úro, DEBUG_MODE: false, height: 10 });
-    document.write("<br>");
-    render_word({ svg_id: "sentence4", syllables_to_render: kom_úro2, DEBUG_MODE: false, height: 10, SPACE_WIDTH: 90 });
-    document.write("<br>");
-    render_word({
-        svg_id: "five_words2",
-        syllables_to_render: ["he", "ma", "sá", "ṇau", "ṭu", " ", "xaQ", "li", "bho", "ḷo", "rí", "ya", " ", "ze", "pha", " ", "khú", "wa", "dhe", "ṣъ", " ", "ʔá", "ghai"], DEBUG_MODE: false, height: 10, SPACE_WIDTH: 90
-    });
-</script>
-</div>
 
 <h2>平均幅計算</h2>
 

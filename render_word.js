@@ -67,9 +67,9 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
                 const axis_stroke_width = UNIT;
                 const axis_width = box_left_pos - word_start + UNIT - GLOBAL_KERNING - axis_stroke_width;
                 if (DEBUG_MODE)
-                    document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="baseline" d="m${word_start + 7.5} 213.75h${axis_width}" stroke="#ffff00" />`;
+                    document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="baseline" d="m${word_start + 7.5} 225h${axis_width}" stroke="#ffff00" />`;
                 if (nautuhoma_e)
-                    document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 71.25h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
+                    document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 75h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
                 box_left_pos += SPACE_WIDTH;
                 word_start = box_left_pos - 棒の端をどれだけ余らせるか;
                 continue;
@@ -105,9 +105,9 @@ function render_word({ syllables_to_render, DEBUG_MODE, svg_id = "main", height 
     const axis_stroke_width = UNIT;
     const axis_width = box_left_pos - word_start + 棒の端をどれだけ余らせるか - GLOBAL_KERNING - axis_stroke_width;
     if (DEBUG_MODE)
-        document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="baseline" d="m${word_start + 7.5} 213.75h${axis_width}" stroke="#ffff00" />`;
+        document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="baseline" d="m${word_start + 7.5} 225h${axis_width}" stroke="#ffff00" />`;
     if (nautuhoma_e)
-        document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 71.25h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
+        document.getElementById(`glyphs_${svg_id}`).innerHTML += `<path id="nautuhoma_e" d="m${word_start + 7.5} 75h${axis_width}" stroke="${DEBUG_MODE ? "#800000" : "#000000"}" />`;
     document.getElementById(svg_id).setAttribute("viewBox", `0 0 ${box_left_pos + 棒の端をどれだけ余らせるか * 2} ${BOX_FULL_HEIGHT}`);
     document.getElementById(svg_id).setAttribute("height", `${height}mm`);
 }
