@@ -10,9 +10,9 @@
         }
     </style>
 
-<script src="base_glyphs.js"></script>
-<script src="make_syllable.js"></script>
-<script src="render_word.js"></script>
+    <script src="base_glyphs.js"></script>
+    <script src="make_syllable.js"></script>
+    <script src="render_word.js"></script>
 </head>
 
 <h1>バート語の組版</h1>
@@ -25,7 +25,8 @@
 
 <img src="arrangement.svg" height="300">
 
-<p>グリフ幅は単位の整数倍であり、子音の固有幅 { "p":  10, "b":  12, "m":  10, "c":  9, "s":  8, "x":  10, "z":  10, "t":  9, "d":  8, "n":  8, "l":  8, "r":  8, "k":  10, "g":  12, "h":  8, "j":  9, "w":  8, "ʔ":  8 } (2024/09/06 現在) に対して、横幅を占有する母音については追加幅 {
+<p>グリフ幅は単位の整数倍であり、子音の固有幅 { "p": 10, "b": 12, "m": 10, "c": 9, "s": 8, "x": 10, "z": 10, "t": 9, "d": 8, "n": 8, "l": 8,
+    "r": 8, "k": 10, "g": 12, "h": 8, "j": 9, "w": 8, "ʔ": 8 } (2024/09/06 現在) に対して、横幅を占有する母音については追加幅 {
     "i": 5, "í": 5, "au": 5, "o": 3 } を足し算するという単純な方法で算出している。</p>
 
 <h2>組み合わせ一覧</h2>
@@ -218,9 +219,11 @@
 
 <h2>4. 子音の上と左にあるやつ (o)</h2>
 
-<p>自身は固定位置で、子音を右にずらすことで配置する。base_glyphs.ts では <code>position: "vowel_is_static_but_displace_consonant"</code> と呼んでいる。</p>
+<p>自身は固定位置で、子音を右にずらすことで配置する。base_glyphs.ts では <code>position: "vowel_is_static_but_displace_consonant"</code> と呼んでいる。
+</p>
 
-<p>2024/09/06 現在、ずらす幅はアドホックに { "p": 3, "b": 2, "m": 3, "c": 3, "s": 2, "x": 2, "z": 2, "t": 3, "d": 2, "n": 3, "l": 2, "r": 2, "k": 2, "g": 2, "h": 4, "j": 3, "w": 3, "ʔ": 3 } と決めている。</p>
+<p>2024/09/06 現在、ずらす幅はアドホックに { "p": 3, "b": 2, "m": 3, "c": 3, "s": 2, "x": 2, "z": 2, "t": 3, "d": 2, "n": 3, "l": 2,
+    "r": 2, "k": 2, "g": 2, "h": 4, "j": 3, "w": 3, "ʔ": 3 } と決めている。</p>
 
 <script>
     render_word({
@@ -320,6 +323,8 @@
 
 <h1>文章を組む</h1>
 
+<h2>そのまま</h2>
+
 <script>
     render_word({
         svg_id: "sentence",
@@ -332,17 +337,27 @@
         syllables_to_render: [
             "ko", "mъ", " ", "ʔú", "ro", " ", "bhá", "ṣъ", "le", "xe", "ḷъ", " ", "we", "nъ", "ta", "pъ", " ", "kí", "ʔo", "mъ", " ", "ʔa", "ṭa", "za", "dhe", "lъ", " ", "ko", "bhau", " ", "ko", "mъ", " ", "ní", "ní", "na", " ", "bha", "ṣъ", " ", { type: "pragma", value: "deactivate_nautuhoma_e" }, "ʔá", "ka", "bá", "ta"], DEBUG_MODE: false, height: 10, SPACE_WIDTH: 90
     });
-    const samples = ["ja", "rú", "ṣi", "cá", "kí", "ká", "ta", "ḍi", "cá", "jau", "ká", "ṇa", "ḍi", "ná", "na", "phú", "pe", "nъ", "ko", "ṭá", "ná", "ṣo", "ya", "bhau", "rú", "ṣá", "nъ", "ʔa", "má", "ma", "bho", "ṇau", "ḍi", "ghi", "ká", "na", "gha", "ma", "ʔí", "da", "ká", "hí", "na", "ká", "ṇai", "sa", "ko", "dhe", "lъ", "ʔa", "ḍu", "ha", "zo", "ze", "ná", "he", "mъ",
+</script>
+
+<h2>平均幅計算</h2>
+
+<script>
+    const sample_text = ["ja", "rú", "ṣi", "cá", "kí", "ká", "ta", "ḍi", "cá", "jau", "ká", "ṇa", "ḍi", "ná", "na", "phú", "pe", "nъ", "ko", "ṭá", "ná", "ṣo", "ya", "bhau", "rú", "ṣá", "nъ", "ʔa", "má", "ma", "bho", "ṇau", "ḍi", "ghi", "ká", "na", "gha", "ma", "ʔí", "da", "ká", "hí", "na", "ká", "ṇai", "sa", "ko", "dhe", "lъ", "ʔa", "ḍu", "ha", "zo", "ze", "ná", "he", "mъ",
 
         "dí", "ʔo", "mъ", "ṣi", "bhai", "ḍi", "ʔo", "ṣa", "sí", "bha", "dho", "ḷo", "pi", "hí", "na", "zu", "cá", "kí", "ka", "dí", "na", "he", "mъ",
 
         "ca", "jъ", "xi", "ta", "nau", "ni", "ja", "su", "ka", "ṣá", "gá", "ná", "na", "ṣú", "sa", "ho", "má", "ṣi", "bhai", "ḍi", "hí", "na", "wo", "ghi", "tá", "nъ", "ʔá", "ghi", "dhe", "lъ", "ʔa", "ḍu", "ha", "zo", "ze", "ná", "he", "mъ", "ko", "ḍi", "ghi", "ghá", "ni", "zu", "bo", "ha", "ká", "sъ", "ḷo",
 
-        "ko", "mъ", "ʔú", "ro", "bhá", "ṣъ", "le", "xe", "ḷъ", "we", "nъ", "ta", "pъ", "kí", "ʔo", "mъ", "ʔa", "ṭa", "za", "dhe", "lъ", "ko", "bhau", "ko", "mъ", "ní", "ní", "na", "bha", "ṣъ", "ʔá", "ka", "bá", "ta"
-    ].map(syll => {
+        "ko", "mъ", "ʔú", "ro", "bhá", "ṣъ", "le", "xe", "ḷъ", "we", "nъ", "ta", "pъ", "kí", "ʔo", "mъ", "ʔa", "ṭa", "za", "dhe", "lъ", "ko", "bhau", "ko", "mъ", "ní", "ní", "na", "bha", "ṣъ", "ʔá", "ka", "bá", "ta",
+
+        "dho", "ḷo", "pá", "ná", "dhá", "ra", "dá", "nъ", "jo", "ṇu", "ḍi", "ghi", "ha", "ʔa", "ḍu", "hai", "da", "dhí",
+
+        "dí", "ṣú", "sa", "ḍi", "ʔo", "sa", "ká", "nъ", "co", "dhi", "ḍi", "hí", "na", "ca", "já", "ká", "kí", "ʔo", "mъ", "hí", "ja", "ḍi", "hí", "na", "bho", "ká", "tá", "he", "mъ", "ʔe", "kъ"
+    ];
+    const samples = sample_text.map(syll => {
         const { consonant, vowel } = get_constituents_from_syllable(syll.replaceAll(/ḍ/g, "dh"));
         return CONSONANT_CONTRIBUTION_TO_WIDTH[consonant] + VOWEL_CONTRIBUTION_TO_WIDTH[vowel];
     });
 
-    // alert(samples.reduce((acc, cur) => acc + cur, 0) / samples.length);
+    document.write(`サンプル ${JSON.stringify(sample_text, null, 1)} から算出した、音節の平均幅：` + (samples.reduce((acc, cur) => acc + cur, 0) / samples.length / UNIT).toPrecision(5) + " 単位");
 </script>
